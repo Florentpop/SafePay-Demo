@@ -5,13 +5,11 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 import HomeScreen from "./HomeScreen";
 import DetailsScreen from "./DetailsScreen";
-import ExploreScreen from "./ExploreScreen";
 import ProfileScreen from "./ProfileScreen";
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
-const ExploreStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -183,7 +181,8 @@ const ProfileStackScreen = ({ navigation }) => (
   </ProfileStack.Navigator>
 );
 
-const ExploreStackScreen = ({ navigation }) => (
+{
+  /*const ExploreStackScreen = ({ navigation }) => (
   <ExploreStack.Navigator
     screenOptions={{
       headerStyle: {
@@ -210,6 +209,7 @@ const ExploreStackScreen = ({ navigation }) => (
           ></Icon.Button>
         ),
       }}
-    /> */}
+    /> *
   </ExploreStack.Navigator>
-);
+);*/
+}
