@@ -183,7 +183,8 @@ const ProfileStackScreen = ({ navigation }) => (
   </ProfileStack.Navigator>
 );
 
-const ExploreStackScreen = ({ navigation }) => (
+{
+  /*const ExploreStackScreen = ({ navigation }) => (
   <ExploreStack.Navigator
     screenOptions={{
       headerStyle: {
@@ -195,7 +196,7 @@ const ExploreStackScreen = ({ navigation }) => (
       },
     }}
   >
-    {/* <ExploreStack.Screen
+     <ExploreStack.Screen
       name="Explore"
       component={ExploreScreen}
       options={{
@@ -210,6 +211,7 @@ const ExploreStackScreen = ({ navigation }) => (
           ></Icon.Button>
         ),
       }}
-    /> */}
+    /> 
   </ExploreStack.Navigator>
-);
+);*/
+}
