@@ -54,18 +54,19 @@ const HomeScreen = ({ navigation }) => {
 
       <View
         style={{
-          //fontWeight: "bold",
-          fontSize: 15,
+          fontWeight: "200",
+          //fontSize: 20,
           textAlign: "center",
           letterSpacing: 2,
-          marginTop: 20,
-          margin: 10,
+          marginTop: 25,
+          // margin: 10,
+          paddingHorizontal: 20,
         }}
       >
-        <Text>An alternative checkout method on product pages for</Text>
-        <Text
-          style={{ color: "#00B0FF", textAlign: "center", fontWeight: "200" }}
-        >
+        <Text style={{ fontSize: 20, textAlign: "center" }}>
+          An alternative checkout method on product pages for
+        </Text>
+        <Text style={{ color: "#00B0FF", textAlign: "center", fontSize: 20 }}>
           online stores
         </Text>
       </View>
@@ -73,7 +74,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.regBtn}>
         <TouchableOpacity
           onPress={() => {
-            //navigation.navigate("#");
+            navigation.navigate("GetStarted");
           }}
           style={styles.regButton}
         >
@@ -90,6 +91,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    justifyContent: "space-around",
+    paddingTop: 20,
   },
   sliderContainer: {
     height: 200,
@@ -136,10 +139,11 @@ const styles = StyleSheet.create({
     height: 122,
     width: "60%",
     alignSelf: "center",
-    marginTop: 5,
+    marginTop: 15,
   },
   regBtn: {
     marginBottom: 80,
+    marginVertical: 20,
     justifyContent: "center",
     alignItems: "center",
   },

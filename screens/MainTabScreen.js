@@ -6,10 +6,13 @@ import Icon from "react-native-vector-icons/Ionicons";
 import HomeScreen from "./HomeScreen";
 import DetailsScreen from "./DetailsScreen";
 import ProfileScreen from "./ProfileScreen";
+import GetStarted from "./GetStartedScreen";
+import Select from "./OptionScreen";
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
+//const GetStarted = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -116,6 +119,13 @@ const HomeStackScreen = ({ navigation }) => (
         ),
       }}
     />
+
+    <HomeStack.Screen
+      name="GetStarted"
+      options={{ headerShown: false }}
+      component={GetStarted}
+    />
+    <HomeStack.Screen name="Select" component={Select} />
   </HomeStack.Navigator>
 );
 
