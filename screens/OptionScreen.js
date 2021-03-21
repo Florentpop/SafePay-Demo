@@ -2,85 +2,102 @@ import React, { useState } from "react";
 import { View, Picker, StyleSheet, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Select = ({ navigation }) => {
+const Select = ({navigation}) => {
   const [selectedValue, setSelectedValue] = useState("merchandise", "buyer");
   return (
-    <View style={styles.mainContainer}>
-      <View style={styles.type}>
+   <View style={styles.mainContainer}>
+        <View style={styles.type}>
         <Text style={styles.typeText}>What type of Transaction?</Text>
-        <Picker
-          selectedValue={selectedValue}
-          style={{ height: 100, width: 200 }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        >
-          <Picker.Item label="Merchandise" value="merchandise" color="blue" />
-        </Picker>
-      </View>
+          <View style={styles.picker}>
+           <Picker
+               selectedValue={selectedValue}
+               style={{ height: 50, width: 200 }}
+               onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+               <Picker.Item label="Merchandise" value="merchandise" color= "blue" />
+               <Picker.Item label="Other" value="other" color= "gray" />
+           </Picker>
+           </View>
+       </View>
 
-      <View style={styles.select}>
+        <View style={styles.select}>
         <Text style={styles.whoText}>Who are you?</Text>
-        <Picker
-          textStyle={{ fontSize: 18 }}
-          selectedValue={selectedValue}
-          style={{ height: 100, width: 200 }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        >
-          <Picker.Item label="Buyer" value="buyer" color="blue" />
-          <Picker.Item label="Seller" value="seller" color="blue" />
-        </Picker>
-      </View>
 
-      <View style={styles.opacity}>
-        <TouchableOpacity style={styles.touchable}>
-          <Text style={styles.continueText}>Continue</Text>
-        </TouchableOpacity>
-      </View>
+         <View style={styles.picker}>
+            <Picker
+               textStyle={{fontSize: 18}}
+               selectedValue={selectedValue}
+               style={{height: 50, width: 200, borderWidth: 1, borderColor: "red"}}
+               onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}>
+               <Picker.Item label="Buyer" value="buyer" color= "blue"  />
+               <Picker.Item label="Seller" value="seller"  color= "blue" />
+               <Picker.Item label="Admin" value="admin"  color= "blue" />
+           </Picker>
+           </View>
+        </View>
+        
+        <View style={styles.opacity}>
+           <TouchableOpacity onPress={() =>{
+              navigation.navigate("Details")
+           }} style={styles.touchable}>
+              <Text style={styles.continueText}>Continue</Text>
+           </TouchableOpacity>
+        </View>
+
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     paddingTop: 80,
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
 
   type: {
-    flex: 1,
+     flex: 1
   },
 
   typeText: {
-    fontSize: 20,
+    fontSize: 20
+
   },
 
   select: {
-    flex: 1,
+      flex: 1
   },
 
   whoText: {
-    fontSize: 20,
+      fontSize: 20
+  },
+
+  picker: {
+    backgroundColor: "lightgrey",
+    borderRadius: 8,
+    height: 50,
+    marginTop: 10
   },
 
   opacity: {
-    flex: 0.5,
+      flex: 0.5
   },
 
   touchable: {
-    backgroundColor: "#00d3ff",
-    width: 150,
-    height: 50,
-    borderRadius: 30,
+      backgroundColor: "#00d3ff",
+      height: 50,
+      width: 150,
+      borderRadius: 30,
   },
 
   continueText: {
-    fontSize: 18,
-    color: "white",
-    textAlign: "center",
-    paddingTop: 12,
-    fontWeight: "bold",
-  },
+      fontSize: 18,
+      color: "white",
+      textAlign: "center",
+      paddingTop: 12,
+      fontWeight: "bold"
+  }
+  
 });
 
 export default Select;

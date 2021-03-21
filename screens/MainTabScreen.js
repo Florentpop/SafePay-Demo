@@ -8,6 +8,10 @@ import DetailsScreen from "./DetailsScreen";
 import ProfileScreen from "./ProfileScreen";
 import GetStarted from "./GetStartedScreen";
 import Select from "./OptionScreen";
+import LogInScreen from "./LogInScreen";
+import SignUpScreen from "./SignUpScreen";
+import Details from "./TransactionDetailScreen";
+import SummaryScreen from "./SummaryScreen";
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
@@ -86,6 +90,16 @@ const HomeStackScreen = ({ navigation }) => (
       },
     }}
   >
+  <HomeStack.Screen
+  name="LogInScreen"
+  options={{ headerShown: false }}
+  component={LogInScreen}
+/>
+<HomeStack.Screen
+  name="SignUpScreen"
+  options={{ headerShown: false }}
+  component={SignUpScreen}
+/>
     <HomeStack.Screen
       name="Home"
       component={HomeScreen}
@@ -126,6 +140,10 @@ const HomeStackScreen = ({ navigation }) => (
       component={GetStarted}
     />
     <HomeStack.Screen name="Select" component={Select} />
+
+    <HomeStack.Screen name="Details" component={Details} />
+
+    <HomeStack.Screen name="Summary" component={SummaryScreen} />
   </HomeStack.Navigator>
 );
 
