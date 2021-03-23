@@ -52,7 +52,7 @@ const LogInScreen = ({ navigation }) => {
       <View style={styles.loginBox}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Select");
+            navigation.navigate("Home");
           }}
           style={styles.loginOpacity}
         >
