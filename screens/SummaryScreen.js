@@ -59,7 +59,9 @@ export default function SummaryScreen ({navigation}) {
           </View>
 
           <View style={styles.opacityContainer}>
-              <TouchableOpacity style={styles.opacity}>
+              <TouchableOpacity onPress={() =>{
+                navigation.navigate("Payment")
+             }}style={styles.opacity} >
                  <Text style={styles.continue}>Continue</Text>
               </TouchableOpacity>
           </View>
