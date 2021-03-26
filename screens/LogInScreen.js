@@ -3,74 +3,121 @@ import {
   Text,
   View,
   StyleSheet,
+  Button,
+  StatusBar,
   TextInput,
-  Image,
   TouchableOpacity,
-  ScrollView,
+  Dimensions,
   SafeAreaView,
+  Platform,
 } from "react-native";
+import * as Animatable from "react-native-animatable";
+import { LinearGradient } from "expo-linear-gradient";
+import Feather from "react-native-vector-icons/Feather";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 //export default function Login({ navigation }) {
 const LogInScreen = ({ navigation }) => {
+  const [data, setData] = React.useState({
+    email: "",
+    password: "",
+    check_textInputChange: false,
+    secureTextEntry: true,
+  });
+
+  const handlePasswordChange = (val) => {
+    setData({
+      ...data,
+      password: val,
+    });
+  };
+
+  const updateSecureTextEntry = () => {
+    setData({
+      ...data,
+      secureTextEntry: !data.secureTextEntry,
+    });
+  };
+
   return (
-    <View style={styles.mainContainer}>
-      <View style={styles.loginTextContainer}></View>
-
-      <View style={styles.imageContainer}>
-        <Text style={styles.loginText}>Login</Text>
-        <Image
-          style={{
-            width: 200,
-            height: 200,
-            alignSelf: "center",
-          }}
-          source={require("../assets/images/login.png")}
-        />
+    <View style={styles.container}>
+      <StatusBar backgroundColor="#009387" barStyle="light-content" />
+      <View style={styles.header}>
+        <Text style={styles.text_header}>SafePay</Text>
       </View>
 
-      <View style={styles.textInputContainer}>
-        <View style={styles.textInput1}>
-          <TextInput placeholder="Email" />
-        </View>
+      <Animatable.View animation="fadeInUpBig" style={styles.footer}>
+        <View style={styles.footer}>
+          <Text style={styles.text_footer}>Email</Text>
+          <View style={styles.action}>
+            <Feather name="mail" color="#05375a" size={20} />
+            <TextInput
+              placeholder="Please Enter Your Email Here"
+              style={styles.textInput}
+              autoCapitalize="none"
+            />
 
-        <View style={styles.textInput2}>
-          <TextInput placeholder="Password" secureTextEntry={true} />
-        </View>
+            <Feather name="check-circle" color="green" size={20} />
+          </View>
 
-        <TouchableOpacity
-          onPres={() => {
-            navigation.navigate("");
-          }}
-          style={styles.forgotPasswordOpacity}
-        >
-          <Text style={styles.forgotPasswordText}>Forgot Password</Text>
-        </TouchableOpacity>
-      </View>
+          <Text style={[styles.text_footer, { marginTop: 35 }]}>Password</Text>
 
-      <View style={styles.forgotPasswordContainer}></View>
+          <View style={styles.action}>
+            <FontAwesome name="lock" color="#05375a" size={20} />
+            <TextInput
+              placeholder="Please Enter Your password Here"
+              secureTextEntry={data.secureTextEntry ? true : false}
+              style={styles.textInput}
+              autoCapitalize="none"
+              onChangeText={(val) => handlePasswordChange(val)}
+            />
+            <TouchableOpacity onPress={updateSecureTextEntry}>
+              {data.secureTextEntry ? (
+                <Feather name="eye-off" color="grey" size={20} />
+              ) : (
+                <Feather name="eye" color="grey" size={20} />
+              )}
+            </TouchableOpacity>
+          </View>
 
-      <View style={styles.loginBox}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Home");
-          }}
-          style={styles.loginOpacity}
-        >
-          <Text style={styles.signInText}>Login</Text>
-        </TouchableOpacity>
-
-        <View style={styles.createAccountContainer}>
-          <Text style={styles.haveAccount}>Don't have an account? </Text>
           <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("SignUpScreen");
+            onPres={() => {
+              navigation.navigate("");
             }}
-            style={styles.createAccountOpacity}
+            style={styles.forgotPasswordOpacity}
           >
-            <Text style={styles.createAccountText}>Signup</Text>
+            <Text style={styles.forgotPasswordText}>Forgot Password</Text>
           </TouchableOpacity>
+
+          <View style={styles.button}>
+            <LinearGradient
+              colors={["#48c6ef", "#6f86d6"]}
+              style={styles.signIn}
+            >
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Home");
+                }}
+              >
+                <Text style={[styles.textSign, { color: "#fff" }]}>
+                  Sign In
+                </Text>
+              </TouchableOpacity>
+            </LinearGradient>
+          </View>
+          <View style={styles.createAccountContainer}>
+            <Text style={styles.haveAccount}>Don't have an account? </Text>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("SignUpScreen");
+              }}
+              style={styles.createAccountOpacity}
+            >
+              <Text style={styles.createAccountText}>SignUp</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </Animatable.View>
     </View>
   );
 };
@@ -78,105 +125,63 @@ const LogInScreen = ({ navigation }) => {
 export default LogInScreen;
 
 const styles = StyleSheet.create({
-  mainContainer: {
+  container: {
     flex: 1,
-    flexDirection: "column",
+    backgroundColor: "#00B0FF",
+  },
+  header: {
+    flex: 1,
+    justifyContent: "flex-end",
+    paddingHorizontal: 20,
+    paddingBottom: 50,
+  },
+  footer: {
+    flex: 2,
     backgroundColor: "#fff",
-    justifyContent: "space-evenly",
-    //alignItems: "center",
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    paddingHorizontal: 20,
+    paddingVertical: 30,
   },
-
-  loginTextContainer: {
-    // flex: 0.8,
-    //flexDirection: "column",
-    //paddingBottom: 50
-  },
-
-  loginText: {
+  text_header: {
+    color: "#fff",
+    fontWeight: "bold",
     fontSize: 40,
-    fontWeight: "bold",
-    color: "#00d3ff",
-    paddingTop: 50,
-    marginRight: 60,
-    //marginVertical: 15
-  },
-
-  imageContainer: {
-    //flex: 3.2,
-    //flexDirection: "column",
-    marginHorizontal: 40,
-    //marginVertical: 20
-  },
-
-  textInputContainer: {
-    paddingTop: 20,
-    //flex: 0.8,
-    //flexDirection: "column"
-  },
-
-  textInput1: {
-    marginLeft: 35,
-    paddingLeft: 15,
-    paddingVertical: 8,
-    height: 45,
-    width: 300,
-    backgroundColor: "#ebecf0",
-    borderRadius: 10,
-    marginBottom: 35,
-    //marginBottom: 25
-  },
-
-  textInput2: {
-    marginLeft: 35,
-    color: "#e1d6da",
-    paddingLeft: 15,
-    paddingVertical: 8,
-    height: 45,
-    width: 300,
-    backgroundColor: "#ebecf0",
-    borderRadius: 10,
-  },
-
-  forgotPasswordContainer: {
-    paddingTop: 25,
-    //flex: 1.2,
-  },
-
-  forgotPasswordOpacity: {
-    marginLeft: 215,
-    //marginVertical: 3
-    // marginTop:45,
-  },
-
-  forgotPasswordText: {
-    color: "#00d3ff",
-    fontSize: 15,
-  },
-
-  loginBox: {
-    paddingTop: 20,
-    //flex: 1,
-    //marginBottom: 20
-  },
-
-  loginOpacity: {
-    backgroundColor: "#00d3ff",
-    height: 50,
-    width: 150,
-    borderRadius: 50,
-    alignSelf: "center",
-    paddingVertical: 15,
-    paddingHorizontal: 54,
-    //marginVertical: 15,
     textAlign: "center",
+    paddingBottom: 20,
   },
-
-  signInText: {
-    color: "white",
-    fontSize: 15,
+  text_footer: {
+    color: "#05375a",
+    fontSize: 18,
+  },
+  action: {
+    flexDirection: "row",
+    marginTop: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#f2f2f2",
+    paddingBottom: 5,
+  },
+  textInput: {
+    flex: 1,
+    marginTop: Platform.OS === "ios" ? 0 : -12,
+    paddingLeft: 10,
+    color: "#05375a",
+  },
+  button: {
+    alignItems: "center",
+    marginTop: 40,
+  },
+  signIn: {
+    width: "100%",
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  textSign: {
+    fontSize: 18,
     fontWeight: "bold",
   },
-
   createAccountContainer: {
     flexDirection: "row",
     //flex: 1,
@@ -184,14 +189,31 @@ const styles = StyleSheet.create({
   },
 
   haveAccount: {
-    marginLeft: 75,
+    marginLeft: 25,
     fontSize: 15,
-    paddingTop: 20,
+    paddingTop: 30,
+    justifyContent: "center",
   },
 
   createAccountText: {
     color: "#00d3ff",
     fontSize: 16,
-    paddingTop: 20,
+    paddingTop: 30,
+    justifyContent: "center",
+  },
+  forgotPasswordContainer: {
+    //paddingTop: 25,
+    //flex: 1.2,
+  },
+
+  forgotPasswordOpacity: {
+    marginLeft: 165,
+    //marginVertical: 3
+    // marginTop:45,
+  },
+
+  forgotPasswordText: {
+    color: "#00d3ff",
+    fontSize: 13,
   },
 });

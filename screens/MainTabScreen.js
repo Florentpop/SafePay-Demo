@@ -16,7 +16,6 @@ import SummaryScreen from "./SummaryScreen";
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
-//const GetStarted = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -90,16 +89,16 @@ const HomeStackScreen = ({ navigation }) => (
       },
     }}
   >
-  <HomeStack.Screen
-  name="LogInScreen"
-  options={{ headerShown: false }}
-  component={LogInScreen}
-/>
-<HomeStack.Screen
-  name="SignUpScreen"
-  options={{ headerShown: false }}
-  component={SignUpScreen}
-/>
+    <HomeStack.Screen
+      name="LogInScreen"
+      options={{ headerShown: false }}
+      component={LogInScreen}
+    />
+    <HomeStack.Screen
+      name="SignUpScreen"
+      options={{ headerShown: false }}
+      component={SignUpScreen}
+    />
     <HomeStack.Screen
       name="Home"
       component={HomeScreen}
