@@ -12,6 +12,8 @@ import LogInScreen from "./LogInScreen";
 import SignUpScreen from "./SignUpScreen";
 import Details from "./TransactionDetailScreen";
 import SummaryScreen from "./SummaryScreen";
+import PaymentScreen from "./PaymentScreen";
+import AlertScreen from "./AlertScreen";
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
@@ -143,6 +145,11 @@ const HomeStackScreen = ({ navigation }) => (
     <HomeStack.Screen name="Details" component={Details} />
 
     <HomeStack.Screen name="Summary" component={SummaryScreen} />
+
+    <HomeStack.Screen name="Payment" component={PaymentScreen} />
+
+    <HomeStack.Screen name="Alert" component={AlertScreen} />
+
   </HomeStack.Navigator>
 );
 

@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
   },
 
   buyingContainer: {
-    marginLeft: 30,
-    paddingBottom: 15,
+    // marginLeft: 30,
+    paddingBottom: 20,
   },
 
   buyingText: {
@@ -90,15 +90,15 @@ const styles = StyleSheet.create({
   inputText: {
     backgroundColor: "lightgrey",
     height: 40,
-    width: 280,
+    width: 330,
     borderRadius: 8,
     fontSize: 15,
     paddingLeft: 10,
   },
 
   priceContainer: {
-    marginLeft: 30,
-    paddingBottom: 15,
+    // marginLeft: 30,
+    paddingBottom: 20,
   },
 
   priceText: {
@@ -118,15 +118,15 @@ const styles = StyleSheet.create({
   inputTest: {
     backgroundColor: "lightgrey",
     height: 40,
-    width: 280,
+    width: 330,
     borderRadius: 8,
     flexDirection: "row",
     paddingLeft: 10,
   },
 
   numberContainer: {
-    marginLeft: 30,
-    paddingBottom: 15,
+    //marginLeft: 30,
+    paddingBottom: 20,
   },
 
   numberText: {
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   },
 
   descriptionContainer: {
-    marginLeft: 30,
+    //marginLeft: 30,
     paddingBottom: 15,
   },
 
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   inputTxt: {
     backgroundColor: "lightgrey",
     height: 80,
-    width: 280,
+    width: 330,
     borderRadius: 8,
     textAlignVertical: "top",
     fontSize: 15,
@@ -156,11 +156,12 @@ const styles = StyleSheet.create({
 
   opacityContainer: {
     alignSelf: "center",
+    marginVertical: 30,
   },
 
   opacity: {
     backgroundColor: "#00d3ff",
-    width: 120,
+    width: 150,
     height: 50,
     borderRadius: 30,
   },
