@@ -110,7 +110,8 @@ const SignUpScreen = ({ navigation }) => {
             <FontAwesome name="mobile" color="#05375a" size={25} />
             <TextInput
               placeholder="Please Enter Your Mobile Number Here"
-              secureTextEntry={data.secureTextEntry ? true : false}
+              secureTextEntry={data.secureTextEntry ? false : false}
+              keyboardType="number-pad"
               style={styles.textInput}
               autoCapitalize="none"
               onChangeText={(val) => handlePasswordChange(val)}

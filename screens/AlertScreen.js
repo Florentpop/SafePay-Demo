@@ -18,7 +18,7 @@ export default function AlertScreen({ navigation }) {
               </Text>
 
               <TouchableOpacity style={styles.opacity} onPress={() => {
-                navigation.navigate();
+                navigation.navigate('Home');
               }}>
                   <Text style={styles.okText}>
                       Ok
