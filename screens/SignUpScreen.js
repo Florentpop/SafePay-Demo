@@ -141,7 +141,7 @@ const SignUpScreen = ({ navigation }) => {
               }}
               style={styles.createAccountOpacity}
             >
-              <Text style={styles.createAccountText}>SignIn</Text>
+              <Text style={styles.createAccountText}>Sign In</Text>
             </TouchableOpacity>
           </View>
         </View>

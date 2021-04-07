@@ -92,16 +92,6 @@ const HomeStackScreen = ({ navigation }) => (
     }}
   >
     <HomeStack.Screen
-      name="LogInScreen"
-      options={{ headerShown: false }}
-      component={LogInScreen}
-    />
-    <HomeStack.Screen
-      name="SignUpScreen"
-      options={{ headerShown: false }}
-      component={SignUpScreen}
-    />
-    <HomeStack.Screen
       name="Home"
       component={HomeScreen}
       options={{
@@ -149,7 +139,6 @@ const HomeStackScreen = ({ navigation }) => (
     <HomeStack.Screen name="Payment" component={PaymentScreen} />
 
     <HomeStack.Screen name="Alert" component={AlertScreen} />
-
   </HomeStack.Navigator>
 );
 

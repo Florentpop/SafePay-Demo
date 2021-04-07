@@ -16,6 +16,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import Feather from "react-native-vector-icons/Feather";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
+import { AuthContext } from "../components/context";
+
 //export default function Login({ navigation }) {
 const LogInScreen = ({ navigation }) => {
   const [data, setData] = React.useState({
@@ -24,6 +26,8 @@ const LogInScreen = ({ navigation }) => {
     check_textInputChange: false,
     secureTextEntry: true,
   });
+
+  const { signIn } = React.useContext(AuthContext);
 
   const handlePasswordChange = (val) => {
     setData({
@@ -96,7 +100,8 @@ const LogInScreen = ({ navigation }) => {
             >
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("Home");
+                  signIn();
+                  //navigation.navigate("Home");
                 }}
               >
                 <Text style={[styles.textSign, { color: "#fff" }]}>
@@ -113,7 +118,7 @@ const LogInScreen = ({ navigation }) => {
               }}
               style={styles.createAccountOpacity}
             >
-              <Text style={styles.createAccountText}>SignUp</Text>
+              <Text style={styles.createAccountText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
         </View>
