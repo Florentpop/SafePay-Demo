@@ -7,7 +7,7 @@ export default function GetStarted({ navigation }) {
       <View style={styles.imageContainer}>
         <Image
           style={{ width: 230, height: 230 }}
-          source={require("../assets/images/safe.jpg")}
+          source={require("../../assets/images/safe.jpg")}
         />
       </View>
 
