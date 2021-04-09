@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, TextInput, Picker, StyleSheet} from 'react-native';
+import {connect} from 'react-redux';
 
-export default function PaymentScreen({ navigation }) {
+function PaymentScreen({ navigation }) {
     const [selectedValue, setSelectedValue] = useState("Network");
     return (
         <View style={styles.parentContainer}>
@@ -42,9 +43,9 @@ export default function PaymentScreen({ navigation }) {
             </View>
 
             <View style={styles.confirmContainer}>
-               <TouchableOpacity style={styles.confirmOpacity} onPress={() => {
-                navigation.navigate("Alert");
-              }}>
+               <TouchableOpacity style={styles.confirmOpacity} onPress={() =>{
+                navigation.navigate("Alert") 
+            }}>
                    <Text style={styles.confirmText}>
                        Confirm
                    </Text>
@@ -129,3 +130,11 @@ const styles = StyleSheet.create({
       }
 
 })
+
+const mapStateToProps = (state) => {
+    return {
+    transact : state.transactions
+    }
+  }
+
+export default connect(mapStateToProps, null)(PaymentScreen);

@@ -1,13 +1,17 @@
-import React from "react";
+import React, {Component} from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {connect} from 'react-redux';
+import {summary} from '../components/redux/actions/authActions';
 
-export default function SummaryScreen({ navigation }) {
+class SummaryScreen extends Component {
+ render(){
+   console.log("summary",this.props.transact)
   return (
     <View style={styles.mainContainer}>
       <View style={styles.amountContainer}>
         <Text style={styles.amountText}>Summary</Text>
 
-        <Text style={styles.totalText}>GH{"\u20B5"}1,820.20</Text>
+        <Text style={styles.totalText}>GH{"\u20B5"}{this.props.transact.itemPrice}</Text>
 
         <Text style={styles.safepayText}>SafePay fee: GH{"\u20B5"}20.20</Text>
       </View>
@@ -15,37 +19,37 @@ export default function SummaryScreen({ navigation }) {
       <View style={styles.horizontalLine} />
 
       <View style={styles.sellerContainer}>
-        <Text style={styles.dealingText}>You are dealing with :</Text>
-        <Text style={styles.numberText}>+233239098765</Text>
-        <Text style={styles.companyText}>Flotech Ltd</Text>
+        <Text style={styles.dealingText}>You are dealing with :{this.props.transact.companyName}</Text>
+        <Text style={styles.numberText}>Number:{this.props.transact.sellerNumber}</Text>
+        <Text style={styles.companyText}></Text>
       </View>
 
       <View style={styles.horizontalLine} />
 
       <View style={styles.itemContainer}>
-        <Text style={styles.purchaseText}>Your are purchasing :</Text>
-        <Text style={styles.itemText}>a Television set</Text>
+        <Text style={styles.purchaseText}>Your are purchasing :{this.props.transact.itemName}</Text>
+        <Text style={styles.itemText}></Text>
       </View>
 
       <View style={styles.horizontalLine} />
 
       <View style={styles.descriptionContainer}>
-        <Text style={styles.descriptionText}>Description :</Text>
-        <Text style={styles.itemText}>Nasco Television set 32"</Text>
+        <Text style={styles.descriptionText}>Description : {this.props.transact.itemDescription}</Text>
+        <Text style={styles.itemText}></Text>
       </View>
 
       <View style={styles.opacityContainer}>
         <TouchableOpacity
           style={styles.opacity}
-          onPress={() => {
-            navigation.navigate("Payment");
-          }}
+          onPress={() => this.props.navigation.navigate('Payment')}
         >
           <Text style={styles.continue}>Continue</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
+ }
+  
 }
 
 const styles = StyleSheet.create({
@@ -106,6 +110,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 18,
+    color: "#484b5a",
     //paddingLeft: 10,
   },
   companyText: {
@@ -164,3 +169,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+const mapStateToProps = (state) => {
+  return {
+  transact : state.transactions
+  }
+}
+
+const mapDispatchToProps = () => {
+  return {
+   summary
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps())(SummaryScreen);
