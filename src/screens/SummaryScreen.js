@@ -1,55 +1,65 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import {connect} from 'react-redux';
-import {summary} from '../components/redux/actions/authActions';
+import { connect } from "react-redux";
+import { summary } from "../components/redux/actions/authActions";
 
 class SummaryScreen extends Component {
- render(){
-   console.log("summary",this.props.transact)
-  return (
-    <View style={styles.mainContainer}>
-      <View style={styles.amountContainer}>
-        <Text style={styles.amountText}>Summary</Text>
+  render() {
+    console.log("summary", this.props.transact);
+    return (
+      <View style={styles.mainContainer}>
+        <View style={styles.amountContainer}>
+          <Text style={styles.amountText}>Summary</Text>
 
-        <Text style={styles.totalText}>GH{"\u20B5"}{this.props.transact.itemPrice}</Text>
+          <Text style={styles.totalText}>
+            GH{"\u20B5"}
+            {this.props.transact.itemPrice}
+          </Text>
 
-        <Text style={styles.safepayText}>SafePay fee: GH{"\u20B5"}20.20</Text>
+          <Text style={styles.safepayText}>SafePay fee: GH{"\u20B5"}20.20</Text>
+        </View>
+
+        <View style={styles.horizontalLine} />
+
+        <View style={styles.sellerContainer}>
+          <Text style={styles.dealingText}>
+            You are dealing with :{this.props.transact.companyName}
+          </Text>
+          <Text style={styles.numberText}>
+            Number:{this.props.transact.sellerNumber}
+          </Text>
+          <Text style={styles.companyText}></Text>
+        </View>
+
+        <View style={styles.horizontalLine} />
+
+        <View style={styles.itemContainer}>
+          <Text style={styles.purchaseText}>
+            Your are purchasing :{this.props.transact.itemName}
+          </Text>
+          <Text style={styles.itemText}></Text>
+        </View>
+
+        <View style={styles.horizontalLine} />
+
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.descriptionText}>
+            Description : {this.props.transact.itemDescription}
+          </Text>
+          <Text style={styles.itemText}></Text>
+        </View>
+
+        <View style={styles.opacityContainer}>
+          <TouchableOpacity
+            style={styles.opacity}
+            onPress={() => this.props.navigation.navigate("Payment")}
+          >
+            <Text style={styles.continue}>Continue</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-
-      <View style={styles.horizontalLine} />
-
-      <View style={styles.sellerContainer}>
-        <Text style={styles.dealingText}>You are dealing with :{this.props.transact.companyName}</Text>
-        <Text style={styles.numberText}>Number:{this.props.transact.sellerNumber}</Text>
-        <Text style={styles.companyText}></Text>
-      </View>
-
-      <View style={styles.horizontalLine} />
-
-      <View style={styles.itemContainer}>
-        <Text style={styles.purchaseText}>Your are purchasing :{this.props.transact.itemName}</Text>
-        <Text style={styles.itemText}></Text>
-      </View>
-
-      <View style={styles.horizontalLine} />
-
-      <View style={styles.descriptionContainer}>
-        <Text style={styles.descriptionText}>Description : {this.props.transact.itemDescription}</Text>
-        <Text style={styles.itemText}></Text>
-      </View>
-
-      <View style={styles.opacityContainer}>
-        <TouchableOpacity
-          style={styles.opacity}
-          onPress={() => this.props.navigation.navigate('Payment')}
-        >
-          <Text style={styles.continue}>Continue</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
- }
-  
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -172,14 +182,14 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-  transact : state.transactions
-  }
-}
+    transact: state.transactions,
+  };
+};
 
 const mapDispatchToProps = () => {
   return {
-   summary
+    summary,
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps())(SummaryScreen);

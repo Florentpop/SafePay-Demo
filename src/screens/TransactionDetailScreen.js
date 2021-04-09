@@ -1,124 +1,125 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  ScrollView
+  ScrollView,
 } from "react-native";
-import {connect} from 'react-redux';
-import {transactions} from '../../src/components/redux/actions/authActions';
+import { connect } from "react-redux";
+import { transactions } from "../../src/components/redux/actions/authActions";
 
 class Details extends Component {
-      constructor(props) {
-        super(props);
-        this.state = {
-          companyName: "",
-          sellerNumber: "",
-          itemName: "",
-          itemPrice: "",
-          itemDescription: "",
-        };
-        this.itemName = this.itemName.bind(this);
-        this.itemPrice = this.itemPrice.bind(this);
-        this.sellerPhone = this.sellerPhone.bind(this);
-        this.itemDescription = this.itemDescription.bind(this);
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      companyName: "",
+      sellerNumber: "",
+      itemName: "",
+      itemPrice: "",
+      itemDescription: "",
+    };
+    this.itemName = this.itemName.bind(this);
+    this.itemPrice = this.itemPrice.bind(this);
+    this.sellerPhone = this.sellerPhone.bind(this);
+    this.itemDescription = this.itemDescription.bind(this);
+  }
 
-      companyName(e) {
-        this.setState({
-          companyName: e.target.value
-        });
-      }
+  companyName(e) {
+    this.setState({
+      companyName: e.target.value,
+    });
+  }
 
-      sellerPhone(e) {
-        this.setState({
-          sellerPhone: e.target.value
-        });
-      }
+  sellerPhone(e) {
+    this.setState({
+      sellerPhone: e.target.value,
+    });
+  }
 
-      itemName(e) {
-        this.setState({
-          itemName: e.target.value
-        });
-      }
+  itemName(e) {
+    this.setState({
+      itemName: e.target.value,
+    });
+  }
 
-      itemPrice(e) {
-        this.setState({
-          itemPrice: e.target.value
-        });
+  itemPrice(e) {
+    this.setState({
+      itemPrice: e.target.value,
+    });
+  }
 
-      }
+  itemDescription(e) {
+    this.setState({
+      itemDescription: e.target.value,
+    });
+  }
 
-      itemDescription(e) {
-        this.setState({
-          itemDescription: e.target.value
-        });
-      }
+  componentDidUpdate() {
+    console.log(this.state);
+  }
 
-      componentDidUpdate(){
-       console.log(this.state)
-     }
+  handleOnSubmit = () => {
+    const data = this.state;
 
-      handleOnSubmit = ()=> {
-      const data = this.state;
+    this.props.transactions(data);
 
-        this.props.transactions(data)
-       
-        this.props.navigation.navigate("Summary")
-          
-       };
+    this.props.navigation.navigate("Summary");
+  };
 
-      render(){
-        console.log(this.props.transact);
-        return (
-          <ScrollView>
-          <View style={styles.detailsContainer}>
-
+  render() {
+    console.log(this.props.transact);
+    return (
+      <ScrollView>
+        <View style={styles.detailsContainer}>
           <View style={styles.buyingContainer}>
-            <Text style={styles.buyingText}>Name of company you dealing with</Text>
-      
+            <Text style={styles.buyingText}>
+              Name of company you dealing with
+            </Text>
+
             <TextInput
               style={styles.inputText}
-              placeholder= "Company Name"
+              placeholder="Company Name"
               value={this.state.companyName}
-              onChangeText={(companyName) =>{
-                this.setState({companyName})
+              onChangeText={(companyName) => {
+                this.setState({ companyName });
               }}
             />
           </View>
 
           <View style={styles.numberContainer}>
             <Text style={styles.numberText}>Seller's phone number</Text>
-      
+
             <TextInput
               style={styles.inputText}
               placeholder="Seller's Number"
               keyboardType="numeric"
               value={this.state.sellerPhone}
-              onChangeText={(sellerNumber) =>{this.setState({sellerNumber})
+              onChangeText={(sellerNumber) => {
+                this.setState({ sellerNumber });
               }}
-             
             />
           </View>
 
           <View style={styles.buyingContainer}>
             <Text style={styles.buyingText}>What are you buying?</Text>
-      
+
             <TextInput
               style={styles.inputText}
-              placeholder= "Item Name"
+              placeholder="Item Name"
               value={this.state.itemName}
-              onChangeText={(itemName) =>{
-                this.setState({itemName})
+              onChangeText={(itemName) => {
+                this.setState({ itemName });
               }}
             />
           </View>
-      
+
           <View style={styles.priceContainer}>
-            <Text style={styles.priceText}>What is the price? GH{"\u20B5"}</Text>
-      
+            <Text style={styles.priceText}>
+              What is the price? GH{"\u20B5"}
+            </Text>
+
             <View style={styles.currencyContainer}>
               {/*<Text style={styles.currency}></Text>*/}
               <TextInput
@@ -126,17 +127,16 @@ class Details extends Component {
                 placeholder="Item Price"
                 keyboardType="numeric"
                 value={this.state.itemPrice}
-                onChangeText={(itemPrice) =>{
-                this.setState({itemPrice})
-              }}
-               
+                onChangeText={(itemPrice) => {
+                  this.setState({ itemPrice });
+                }}
               />
             </View>
           </View>
-      
+
           <View style={styles.descriptionContainer}>
             <Text style={styles.descriptionText}>Description</Text>
-      
+
             <TextInput
               style={styles.inputTxt}
               placeholder="Item Description"
@@ -146,30 +146,27 @@ class Details extends Component {
               numberOfLines={2}
               maxLength={150}
               value={this.state.itemDescription}
-              onChangeText={(itemDescription) =>{
-                this.setState({itemDescription})
+              onChangeText={(itemDescription) => {
+                this.setState({ itemDescription });
               }}
-              
             />
           </View>
-      
+
           <View style={styles.opacityContainer}>
             <TouchableOpacity
               style={styles.opacity}
               onPress={() => {
-               this.handleOnSubmit()
+                this.handleOnSubmit();
               }}
             >
               <Text style={styles.continueText}>Continue</Text>
             </TouchableOpacity>
           </View>
         </View>
-        </ScrollView>
-        );
-
-      }
-};
-
+      </ScrollView>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   detailsContainer: {
@@ -274,19 +271,18 @@ const styles = StyleSheet.create({
     paddingTop: 13,
     fontWeight: "bold",
   },
-})
+});
 
 const mapStateToProps = (state) => {
   return {
-  transact : state
-  }
-}
+    transact: state,
+  };
+};
 
 const mapDispatchToProps = () => {
   return {
-   transactions
+    transactions,
   };
-}
+};
 
-
-export default connect(mapStateToProps, mapDispatchToProps()) (Details);
+export default connect(mapStateToProps, mapDispatchToProps())(Details);

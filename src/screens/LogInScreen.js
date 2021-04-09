@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
   Text,
   View,
@@ -7,155 +7,163 @@ import {
   StatusBar,
   TextInput,
   TouchableOpacity,
-  Dimensions,
-  SafeAreaView,
+  TouchableWithoutFeedback,
+  Keyboard,
   Platform,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
 import Feather from "react-native-vector-icons/Feather";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import {connect} from 'react-redux';
-import {loginEmailAccount} from '../components/redux/actions/authActions';
+import { connect } from "react-redux";
+import { loginEmailAccount } from "../components/redux/actions/authActions";
 
 //export default function Login({ navigation }) {
-class LogInScreen extends Component{
-  constructor(props){
-    super(props)
+class LogInScreen extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       eye: "eye-off",
-       email: "",
-       password: "",
-       showPassword: true
-    }
+      email: "",
+      password: "",
+      showPassword: true,
+    };
   }
 
-  handleUpdateState = (name,value)=>{
-      this.setState({ 
-        [name]:value
-      })
-  }
+  handleUpdateState = (name, value) => {
+    this.setState({
+      [name]: value,
+    });
+  };
 
-  changePasswordType = ()=>{
+  changePasswordType = () => {
     let newState;
-    if(this.state.showPassword){
+    if (this.state.showPassword) {
       newState = {
-        eye: 'show',
+        eye: "show",
         showPassword: false,
-        password: this.state.password
-      }
-
-    }else {
+        password: this.state.password,
+      };
+    } else {
       newState = {
-        eye: 'eye-off',
+        eye: "eye-off",
         showPassword: true,
-        password: this.state.password
-      }
+        password: this.state.password,
+      };
     }
-    this.setState(newState)
+    this.setState(newState);
   };
 
   handlePassword = (password) => {
     let newState = {
       eye: this.state.showPassword,
-      password: password
-    }
+      password: password,
+    };
     this.setState(newState);
     this.props.callback(password);
   };
 
-  handleOnSubmit = ()=> {
-   this.props.loginEmailAccount(this.state.email, this.state.password)
-  }
-  render(){
-    const {navigation, auth} = this.props
+  handleOnSubmit = () => {
+    this.props.loginEmailAccount(this.state.email, this.state.password);
+  };
+  render() {
+    const { navigation, auth } = this.props;
     return (
-    
-      <View style={styles.container}>
-        <StatusBar backgroundColor="#009387" barStyle="light-content" />
-        <View style={styles.header}>
-          <Text style={styles.text_header}>SafePay</Text>
-        </View>
-  
-        <Animatable.View animation="fadeInUpBig" style={styles.footer}>
-          <View style={styles.footer}>
-          {
-            auth.error.login && 
-            <Text style={{color: 'red'}}>{auth.error.login}</Text> 
-          }
-            <Text style={styles.text_footer}>Email</Text>
-            <View style={styles.action}>
-              <Feather name="mail" color="#05375a" size={20} />
-              <TextInput
-                placeholder="Please Enter Your Email Here"
-                value={this.state.email}
-                 onChangeText={(text) => {this.handleUpdateState('email', text)}}
-                style={styles.textInput}
-                autoCapitalize="none"
-              />
-  
-              <Feather name="check-circle" color="green" size={20} />
-            </View>
-  
-            <Text style={[styles.text_footer, { marginTop: 35 }]}>Password</Text>
-  
-            <View style={styles.action}>
-              <FontAwesome name="lock" color="#05375a" size={20} />
-              <TextInput
-                placeholder="Please Enter Your password Here"
-                value={this.state.password}
-                 onChangeText={(text) => {this.handleUpdateState('password', text)}}
-                secureTextEntry={this.state.showPassword}
-                style={styles.textInput}
-                autoCapitalize="none"
-                onChangeText={(text) => {this.handleUpdateState('password', text)}}
-              />
-              <TouchableOpacity onPress={this.changePasswordType}>
-              <Feather name="eye-off" color="grey" size={20} />
-              </TouchableOpacity>
-            
-            </View>
-  
-            <TouchableOpacity
-              onPres={() => {
-                navigation.navigate("");
-              }}
-              style={styles.forgotPasswordOpacity}
-            >
-              <Text style={styles.forgotPasswordText}>Forgot Password</Text>
-            </TouchableOpacity>
-  
-            <View style={styles.button}>
-              <LinearGradient
-                colors={["#48c6ef", "#6f86d6"]}
-                style={styles.signIn}
-              >
-                <TouchableOpacity
-                  onPress={this.handleOnSubmit}
-                >
-                  <Text style={[styles.textSign, { color: "#fff" }]}>
-                    Sign In
-                  </Text>
-                </TouchableOpacity>
-              </LinearGradient>
-            </View>
-            <View style={styles.createAccountContainer}>
-              <Text style={styles.haveAccount}>Don't have an account? </Text>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate("SignUpScreen");
-                }}
-                style={styles.createAccountOpacity}
-              >
-                <Text style={styles.createAccountText}>SignUp</Text>
-              </TouchableOpacity>
-            </View>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
+        }}
+      >
+        <View style={styles.container}>
+          <StatusBar backgroundColor="#009387" barStyle="light-content" />
+          <View style={styles.header}>
+            <Text style={styles.text_header}>SafePay</Text>
           </View>
-        </Animatable.View>
-      </View>
+
+          <Animatable.View animation="fadeInUpBig" style={styles.footer}>
+            <View style={styles.footer}>
+              {auth.error.login && (
+                <Text style={{ color: "red" }}>{auth.error.login}</Text>
+              )}
+              <Text style={styles.text_footer}>Email</Text>
+              <View style={styles.action}>
+                <Feather name="mail" color="#05375a" size={20} />
+                <TextInput
+                  placeholder="Please Enter Your Email Here"
+                  value={this.state.email}
+                  onChangeText={(text) => {
+                    this.handleUpdateState("email", text);
+                  }}
+                  style={styles.textInput}
+                  autoCapitalize="none"
+                />
+
+                <Feather name="check-circle" color="green" size={20} />
+              </View>
+
+              <Text style={[styles.text_footer, { marginTop: 35 }]}>
+                Password
+              </Text>
+
+              <View style={styles.action}>
+                <FontAwesome name="lock" color="#05375a" size={20} />
+                <TextInput
+                  placeholder="Please Enter Your password Here"
+                  value={this.state.password}
+                  onChangeText={(text) => {
+                    this.handleUpdateState("password", text);
+                  }}
+                  secureTextEntry={this.state.showPassword}
+                  style={styles.textInput}
+                  autoCapitalize="none"
+                  onChangeText={(text) => {
+                    this.handleUpdateState("password", text);
+                  }}
+                />
+                <TouchableOpacity onPress={this.changePasswordType}>
+                  <Feather name="eye-off" color="grey" size={20} />
+                </TouchableOpacity>
+              </View>
+
+              <TouchableOpacity
+                onPres={() => {
+                  navigation.navigate("");
+                }}
+                style={styles.forgotPasswordOpacity}
+              >
+                <Text style={styles.forgotPasswordText}>Forgot Password</Text>
+              </TouchableOpacity>
+
+              <View style={styles.button}>
+                <LinearGradient
+                  colors={["#48c6ef", "#6f86d6"]}
+                  style={styles.signIn}
+                >
+                  <TouchableOpacity onPress={this.handleOnSubmit}>
+                    <Text style={[styles.textSign, { color: "#fff" }]}>
+                      Sign In
+                    </Text>
+                  </TouchableOpacity>
+                </LinearGradient>
+              </View>
+              <View style={styles.createAccountContainer}>
+                <Text style={styles.haveAccount}>Don't have an account? </Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("SignUpScreen");
+                  }}
+                  style={styles.createAccountOpacity}
+                >
+                  <Text style={styles.createAccountText}>SignUp</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Animatable.View>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -169,7 +177,7 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
   },
   footer: {
-    flex: 2,
+    flex: 3,
     backgroundColor: "#fff",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
@@ -253,8 +261,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    auth: state
-  }
-}
+    auth: state,
+  };
+};
 
-export default connect(mapStateToProps, {loginEmailAccount} )(LogInScreen);
+export default connect(mapStateToProps, { loginEmailAccount })(LogInScreen);
