@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { connect } from "react-redux";
+import PaystackWebView from "react-native-paystack-webview";
 
 function PaymentScreen({ navigation }) {
   const [selectedValue, setSelectedValue] = useState("Network");
@@ -62,6 +63,28 @@ function PaymentScreen({ navigation }) {
         >
           <Text style={styles.confirmText}>Confirm</Text>
         </TouchableOpacity>
+      </View>
+      {/* PayStack */}
+      <View style={{ flex: 1 }}>
+        <PaystackWebView
+          buttonText="Pay Now"
+          showPayButton={true}
+          paystackKey="pk_test_981dcc5a82172a642fb675c819663af1eefc63d2"
+          amount={5000}
+          billingEmail="paystackwebview@something.com"
+          billingMobile="09787377462"
+          billingName="Oluwatobi Shokunbi"
+          ActivityIndicatorColor="green"
+          SafeAreaViewContainer={{ marginTop: 5 }}
+          SafeAreaViewContainerModal={{ marginTop: 5 }}
+          onCancel={(e) => {
+            // handle response here
+          }}
+          onSuccess={(res) => {
+            // handle response here
+          }}
+          autoStart={false}
+        />
       </View>
     </View>
   );

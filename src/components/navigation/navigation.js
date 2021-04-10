@@ -13,6 +13,7 @@ import Details from "../../../src/screens/TransactionDetailScreen";
 import Summary from "../../../src/screens/SummaryScreen";
 import Payment from "../../../src/screens/PaymentScreen";
 import Alert from "../../../src/screens/AlertScreen";
+import Tabs from "../../../src/screens/TabScreens";
 
 const Stack = createStackNavigator();
 
@@ -26,7 +27,7 @@ function AppContainer({ auth }) {
               headerShown: false,
             }}
             name="HomeScreen"
-            component={HomeScreen}
+            component={Tabs}
           />
 
           <Stack.Screen

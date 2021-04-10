@@ -39,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
             fontSize: 15,
             textAlign: "center",
             letterSpacing: 2,
-            marginTop: 20,
+            marginTop: 5,
             margin: 10,
           }}
         >
@@ -74,7 +74,7 @@ const HomeScreen = ({ navigation }) => {
         </Text>
       </View>
 
-      <View style={styles.regBtn}>
+      {/*<View style={styles.regBtn}>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("GetStarted");
@@ -83,7 +83,7 @@ const HomeScreen = ({ navigation }) => {
         >
           <Text style={styles.regText}>Start SafePay</Text>
         </TouchableOpacity>
-      </View>
+        </View>*/}
     </View>
   );
 };
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     justifyContent: "space-around",
-    paddingTop: 20,
+    paddingTop: 10,
   },
   sliderContainer: {
     height: 200,

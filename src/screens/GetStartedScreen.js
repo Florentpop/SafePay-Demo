@@ -47,9 +47,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingHorizontal: 20,
     textAlign: "center",
+    marginBottom: 15,
   },
 
-  getStartedContainer: {},
+  getStartedContainer: {
+    paddingBottom: 90,
+  },
 
   getStartedOpacity: {
     backgroundColor: "#00d3ff",
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
   getStarted: {
     color: "white",
     textAlign: "center",
-    paddingTop: 15,
+    paddingTop: 10,
     fontWeight: "bold",
     fontSize: 16,
   },
