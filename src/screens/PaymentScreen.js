@@ -6,6 +6,7 @@ import {
   TextInput,
   Picker,
   StyleSheet,
+  ScrollView,
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -14,11 +15,7 @@ function PaymentScreen({ navigation, route }) {
 
   return (
     <View style={styles.parentContainer}>
-      <View style={styles.paymentTextContainer}>
-        <Text style={styles.paymentText}>Payment</Text>
-      </View>
-
-      <View style={styles.totalAmount}>
+      <View style={styles.contentContainer}>
         <Text style={styles.amountText}>
           GH{"\u20B5"}
           {route.params.data}
@@ -74,7 +71,7 @@ function PaymentScreen({ navigation, route }) {
 const styles = StyleSheet.create({
   parentContainer: {
     flex: 1,
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
   },
 
   paymentText: {
@@ -90,11 +87,19 @@ const styles = StyleSheet.create({
     width: 300,
     alignSelf: "center",
   },
+  contentContainer: {
+    alignSelf: "center",
+    height: 150,
+    width: 300,
+    backgroundColor: "white",
+    elevation: 25,
+    shadowColor: "#DEF5FA",
+  },
 
   amountText: {
     fontSize: 25,
     textAlign: "center",
-    paddingTop: 70,
+    paddingTop: 55,
     fontWeight: "bold",
     color: "#423706",
   },

@@ -36,7 +36,7 @@ class SummaryScreen extends Component {
 
     return (
       <View style={styles.mainContainer}>
-        <View style={styles.amountContainer}>
+        <View style={styles.contentContainer}>
           <Text style={styles.amountText}>Summary</Text>
 
           <Text style={styles.totalText}>
@@ -98,11 +98,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
 
-  amountContainer: {
-    backgroundColor: "lightgrey",
+  contentContainer: {
+    alignSelf: "center",
     height: 150,
     width: 300,
-    alignSelf: "center",
+    backgroundColor: "white",
+    elevation: 25,
+    shadowColor: "#DEF5FA",
   },
 
   amountText: {
