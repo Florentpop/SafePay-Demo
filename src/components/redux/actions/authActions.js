@@ -70,7 +70,7 @@ export function transactions(data) {
   };
 }
 
-export function summary() {
+export function total(info) {
   return {
     type: "SEND_SUMMARY",
     info: info,

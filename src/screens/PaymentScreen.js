@@ -8,10 +8,10 @@ import {
   StyleSheet,
 } from "react-native";
 import { connect } from "react-redux";
-import PaystackWebView from "react-native-paystack-webview";
 
-function PaymentScreen({ navigation }) {
+function PaymentScreen({ navigation, route }) {
   const [selectedValue, setSelectedValue] = useState("Network");
+
   return (
     <View style={styles.parentContainer}>
       <View style={styles.paymentTextContainer}>
@@ -19,7 +19,10 @@ function PaymentScreen({ navigation }) {
       </View>
 
       <View style={styles.totalAmount}>
-        <Text style={styles.amountText}>GH{"\u20B5"}1,820.20</Text>
+        <Text style={styles.amountText}>
+          GH{"\u20B5"}
+          {route.params.data}
+        </Text>
       </View>
 
       <View style={styles.momoTextContainer}>
@@ -31,7 +34,7 @@ function PaymentScreen({ navigation }) {
 
       <View style={styles.inputContainer}>
         <TextInput
-          placeholder="050 000 0000"
+          placeholder="Enter Mobile Money Number"
           keyboardType="numeric"
           style={styles.input}
         />
@@ -63,28 +66,6 @@ function PaymentScreen({ navigation }) {
         >
           <Text style={styles.confirmText}>Confirm</Text>
         </TouchableOpacity>
-      </View>
-      {/* PayStack */}
-      <View style={{ flex: 1 }}>
-        <PaystackWebView
-          buttonText="Pay Now"
-          showPayButton={true}
-          paystackKey="pk_test_981dcc5a82172a642fb675c819663af1eefc63d2"
-          amount={5000}
-          billingEmail="paystackwebview@something.com"
-          billingMobile="09787377462"
-          billingName="Oluwatobi Shokunbi"
-          ActivityIndicatorColor="green"
-          SafeAreaViewContainer={{ marginTop: 5 }}
-          SafeAreaViewContainerModal={{ marginTop: 5 }}
-          onCancel={(e) => {
-            // handle response here
-          }}
-          onSuccess={(res) => {
-            // handle response here
-          }}
-          autoStart={false}
-        />
       </View>
     </View>
   );
@@ -166,6 +147,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
+    sum: state.total,
     transact: state.transactions,
   };
 };

@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
 
   opacityContainer: {
     alignSelf: "center",
-    marginVertical: 30,
+    marginTop: 60,
   },
 
   opacity: {
