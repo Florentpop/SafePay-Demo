@@ -2,31 +2,77 @@ import React, { Component } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { total } from "../../src/components/redux/actions/authActions";
+import { addSummary } from "../../src/components/redux/actions/authActions";
 
 class SummaryScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      safePayFee: "",
+      overAllPayment: "",
+      companyName: "",
+      sellerNumber: "",
+      itemName: "",
+      itemDescription: "",
     };
-    this.fee = this.safePayFee.bind(this);
+    this.overAllPayment = this.overAllPayment.bind(this);
+    this.itemPrice = this.itemPrice.bind(this);
+    this.companyName = this.companyName.bind(this);
+    this.sellerPhone = this.sellerPhone.bind(this);
+    this.itemName = this.itemName.bind(this);
+    this.itemDescription = this.itemDescription.bind(this);
   }
 
-  safePayFee(e) {
+  overAllPayment(e) {
     this.setState({
-      safePayFee: e.target.value,
+      overAllPayment: e.target.value,
     });
   }
 
-  handleOnSubmit = () => {
-    const info = this.state;
+  itemPrice(e) {
+    this.setState({
+      itemPrice: e.target.value,
+    });
+  }
 
-    this.props.total(info);
+  companyName(e) {
+    this.setState({
+      companyName: e.target.value,
+    });
+  }
+  sellerPhone(e) {
+    this.setState({
+      sellerPhone: e.target.value,
+    });
+  }
+
+  itemName(e) {
+    this.setState({
+      itemName: e.target.value,
+    });
+  }
+
+  itemDescription(e) {
+    this.setState({
+      itemDescription: e.target.value,
+    });
+  }
+
+  componentDidUpdate() {
+    console.log(this.state);
+  }
+
+  handleOnSubmit = () => {
+    const data = this.state;
+
+    this.props.total(data);
+
     const sale = this.props.transact.itemPrice;
     const percent = 3;
 
     const percentage = (percent / 100) * sale;
     const overAllPayment = Number(this.props.transact.itemPrice) + percentage;
+
+    this.props.addSummary(data);
 
     this.props.navigation.navigate("Payment", { data: overAllPayment });
   };
@@ -221,6 +267,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = () => {
   return {
     total,
+    addSummary,
   };
 };
 

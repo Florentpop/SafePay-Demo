@@ -36,6 +36,20 @@ export function logout() {
   };
 }
 
+export const addTransaction = (transaction) => {
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("transactions")
+      .add(transaction)
+      .then((doc) => {
+        console.log(doc);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
 function loggedIn(user) {
   return {
     type: "LOGGED_IN",

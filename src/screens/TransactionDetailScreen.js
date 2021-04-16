@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { transactions } from "../../src/components/redux/actions/authActions";
+import { addTransaction } from "../../src/components/redux/actions/authActions";
 
 class Details extends Component {
   constructor(props) {
@@ -64,6 +65,8 @@ class Details extends Component {
     const data = this.state;
 
     this.props.transactions(data);
+
+    this.props.addTransaction(data);
 
     this.props.navigation.navigate("Summary");
   };
@@ -282,6 +285,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = () => {
   return {
     transactions,
+    addTransaction,
   };
 };
 
