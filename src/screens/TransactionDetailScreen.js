@@ -66,7 +66,7 @@ class Details extends Component {
 
     this.props.transactions(data);
 
-    this.props.addTransaction(data);
+    //this.props.addTransaction(data);
 
     this.props.navigation.navigate("Summary");
   };

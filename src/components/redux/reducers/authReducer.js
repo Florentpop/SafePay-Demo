@@ -3,7 +3,6 @@ import { v4 as uuid } from "uuid";
 const initialState = {
   login: false,
   user: null,
-  transactions: {},
   summarys: {},
   error: {},
   transactions: {},

@@ -7,60 +7,7 @@ import { addSummary } from "../../src/components/redux/actions/authActions";
 class SummaryScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      overAllPayment: "",
-      companyName: "",
-      sellerNumber: "",
-      itemName: "",
-      itemDescription: "",
-    };
-    this.overAllPayment = this.overAllPayment.bind(this);
-    this.itemPrice = this.itemPrice.bind(this);
-    this.companyName = this.companyName.bind(this);
-    this.sellerPhone = this.sellerPhone.bind(this);
-    this.itemName = this.itemName.bind(this);
-    this.itemDescription = this.itemDescription.bind(this);
   }
-
-  overAllPayment(e) {
-    this.setState({
-      overAllPayment: e.target.value,
-    });
-  }
-
-  itemPrice(e) {
-    this.setState({
-      itemPrice: e.target.value,
-    });
-  }
-
-  companyName(e) {
-    this.setState({
-      companyName: e.target.value,
-    });
-  }
-  sellerPhone(e) {
-    this.setState({
-      sellerPhone: e.target.value,
-    });
-  }
-
-  itemName(e) {
-    this.setState({
-      itemName: e.target.value,
-    });
-  }
-
-  itemDescription(e) {
-    this.setState({
-      itemDescription: e.target.value,
-    });
-  }
-
-  componentDidUpdate() {
-    console.log(this.state);
-  }
-
   handleOnSubmit = () => {
     const data = this.state;
 
@@ -71,8 +18,16 @@ class SummaryScreen extends Component {
 
     const percentage = (percent / 100) * sale;
     const overAllPayment = Number(this.props.transact.itemPrice) + percentage;
+    console.log(overAllPayment);
 
-    this.props.addSummary(data);
+    const allSummary = {
+      overAllPayment,
+      companyName: this.props.transact.companyName,
+      sellerNumber: this.props.transact.sellerNumber,
+      itemName: this.props.transact.itemName,
+      itemDescription: this.props.transact.itemDescription,
+    };
+    this.props.addSummary(allSummary);
 
     this.props.navigation.navigate("Payment", { data: overAllPayment });
   };

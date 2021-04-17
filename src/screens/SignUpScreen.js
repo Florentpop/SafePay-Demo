@@ -56,7 +56,7 @@ class SignUpScreen extends Component {
         }}
       >
         <View style={styles.container}>
-          <StatusBar backgroundColor="#009387" barStyle="light-content" />
+          <StatusBar backgroundColor="#00B0FF" barStyle="light-content" />
           <View style={styles.header}>
             <Text style={styles.text_header}>Register Now</Text>
           </View>
