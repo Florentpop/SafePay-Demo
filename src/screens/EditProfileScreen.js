@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, StatusBar } from "react-native";
 
 const EditProfileScreen = () => {
   return (
     <View style={StyleSheet.container}>
-      <Text>History Screen</Text>
+      <StatusBar barStyle="dark-content" backgroundColor="#4470da" />
+      <Text>Edit Profile Screen</Text>
       <Button title="Click Here" onPress={() => alert("Button Clicked")} />
     </View>
   );

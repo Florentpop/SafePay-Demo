@@ -14,6 +14,7 @@ import Summary from "../../../src/screens/SummaryScreen";
 import Payment from "../../../src/screens/PaymentScreen";
 import Alert from "../../../src/screens/AlertScreen";
 import Tabs from "../../../src/screens/TabScreens";
+import EditProfileScreen from "../../../src/screens/EditProfileScreen";
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,19 @@ function AppContainer({ auth }) {
             }}
             name="HomeScreen"
             component={Tabs}
+          />
+
+          <Stack.Screen
+            options={{
+              headerTitle: "Edit Profile",
+              headerStyle: {
+                backgroundColor: "#4470da",
+              },
+              headerTintColor: "white",
+              headerTitleAlign: "center",
+            }}
+            name="EditProfileScreen"
+            component={EditProfileScreen}
           />
 
           <Stack.Screen
