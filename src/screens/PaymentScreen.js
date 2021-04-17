@@ -6,6 +6,7 @@ import {
   TextInput,
   Picker,
   StyleSheet,
+  ScrollView,
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -14,9 +15,9 @@ function PaymentScreen({ navigation, route }) {
 
   return (
     <View style={styles.parentContainer}>
-      <View style={styles.paymentTextContainer}>
+      {/**  <View style={styles.paymentTextContainer}>
         <Text style={styles.paymentText}>Payment</Text>
-      </View>
+      </View>*/}
 
       <View style={styles.totalAmount}>
         <Text style={styles.amountText}>
