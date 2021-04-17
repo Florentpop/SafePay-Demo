@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { View, Picker, StyleSheet, Text } from "react-native";
+import { View, Picker, StyleSheet, Text, StatusBar } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Select = ({ navigation }) => {
   const [selectedValue, setSelectedValue] = useState("merchandise", "buyer");
   return (
     <View style={styles.mainContainer}>
+      <StatusBar barStyle="dark-content" backgroundColor="#4470da" />
       <View style={styles.type}>
         <Text style={styles.typeText}>What type of Transaction?</Text>
         <View style={styles.picker}>

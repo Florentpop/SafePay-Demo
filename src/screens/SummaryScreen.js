@@ -2,31 +2,32 @@ import React, { Component } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { total } from "../../src/components/redux/actions/authActions";
+import { addSummary } from "../../src/components/redux/actions/authActions";
 
 class SummaryScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      safePayFee: "",
-    };
-    this.fee = this.safePayFee.bind(this);
   }
-
-  safePayFee(e) {
-    this.setState({
-      safePayFee: e.target.value,
-    });
-  }
-
   handleOnSubmit = () => {
-    const info = this.state;
+    const data = this.state;
 
-    this.props.total(info);
+    this.props.total(data);
+
     const sale = this.props.transact.itemPrice;
     const percent = 3;
 
     const percentage = (percent / 100) * sale;
     const overAllPayment = Number(this.props.transact.itemPrice) + percentage;
+    console.log(overAllPayment);
+
+    const allSummary = {
+      overAllPayment,
+      companyName: this.props.transact.companyName,
+      sellerNumber: this.props.transact.sellerNumber,
+      itemName: this.props.transact.itemName,
+      itemDescription: this.props.transact.itemDescription,
+    };
+    this.props.addSummary(allSummary);
 
     this.props.navigation.navigate("Payment", { data: overAllPayment });
   };
@@ -221,6 +222,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = () => {
   return {
     total,
+    addSummary,
   };
 };
 

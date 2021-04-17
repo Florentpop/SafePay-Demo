@@ -36,6 +36,28 @@ export function logout() {
   };
 }
 
+export const addSummary = (summary) => {
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("summarys")
+      .add({
+        overAllPayment: summary.overAllPayment,
+        companyName: summary.companyName,
+        sellerNumber: summary.sellerNumber,
+        itemName: summary.itemName,
+        itemDescription: summary.itemDescription,
+        createdAt: new Date(),
+      })
+      .then((doc) => {
+        console.log(doc);
+        //alert("Summary Sent");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
 function loggedIn(user) {
   return {
     type: "LOGGED_IN",

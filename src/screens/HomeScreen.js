@@ -1,10 +1,18 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
 import Swiper from "react-native-swiper";
 
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <View style={styles.sliderContainer}>
         <Swiper autoplay horizontal={false} height={200} activeDotColor="#fff">
           <View style={styles.slide}>
@@ -32,15 +40,16 @@ const HomeScreen = ({ navigation }) => {
           </View>
         </Swiper>
       </View>
+
       <View style={styles.texts}>
         <Text
           style={{
             fontWeight: "200",
-            fontSize: 15,
+            fontSize: 17,
             textAlign: "center",
             letterSpacing: 2,
             marginTop: 5,
-            margin: 10,
+            margin: 6,
           }}
         >
           A safer way for buyers to pay you with confidence in digital
@@ -62,15 +71,12 @@ const HomeScreen = ({ navigation }) => {
           textAlign: "center",
           letterSpacing: 2,
           marginTop: 25,
-          // margin: 10,
+          margin: 10,
           paddingHorizontal: 20,
         }}
       >
-        <Text style={{ fontSize: 20, textAlign: "center" }}>
-          An alternative checkout method on product pages for
-        </Text>
-        <Text style={{ color: "#00B0FF", textAlign: "center", fontSize: 20 }}>
-          online stores
+        <Text style={{ fontSize: 15, textAlign: "center", marginBottom: 95 }}>
+          An alternative checkout method on product pages for online stores
         </Text>
       </View>
 
@@ -104,6 +110,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     borderRadius: 10,
+  },
+
+  texts: {
+    marginTop: -50,
   },
 
   wrapper: {},
@@ -142,7 +152,8 @@ const styles = StyleSheet.create({
     height: 122,
     width: "60%",
     alignSelf: "center",
-    marginTop: 15,
+    marginTop: -90,
+    marginBottom: -60,
   },
   regBtn: {
     marginBottom: 80,
