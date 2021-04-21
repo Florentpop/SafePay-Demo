@@ -57,7 +57,7 @@ function AppContainer({ auth }) {
             options={{
               headerTitle: "Select option",
               headerStyle: {
-                backgroundColor: "#4470da",
+                backgroundColor: "#5CBE7D",
               },
               headerTintColor: "white",
               headerTitleAlign: "center",
@@ -70,7 +70,7 @@ function AppContainer({ auth }) {
             options={{
               headerTitle: "Transaction Details",
               headerStyle: {
-                backgroundColor: "#4470da",
+                backgroundColor: "#5CBE7D",
               },
               headerTintColor: "white",
               headerTitleAlign: "center",
@@ -83,7 +83,7 @@ function AppContainer({ auth }) {
             options={{
               headerTitle: "Transaction Details",
               headerStyle: {
-                backgroundColor: "#4470da",
+                backgroundColor: "#5CBE7D",
               },
               headerTintColor: "white",
               headerTitleAlign: "center",
@@ -96,7 +96,7 @@ function AppContainer({ auth }) {
             options={{
               headerTitle: "Transaction Summary",
               headerStyle: {
-                backgroundColor: "#4470da",
+                backgroundColor: "#5CBE7D",
               },
               headerTintColor: "white",
               headerTitleAlign: "center",
@@ -109,7 +109,7 @@ function AppContainer({ auth }) {
             options={{
               headerTitle: "Payment",
               headerStyle: {
-                backgroundColor: "#4470da",
+                backgroundColor: "#5CBE7D",
               },
               headerTintColor: "white",
               headerTitleAlign: "center",
@@ -122,7 +122,7 @@ function AppContainer({ auth }) {
             options={{
               headerTitle: "Alert",
               headerStyle: {
-                backgroundColor: "#4470da",
+                backgroundColor: "#5CBE7D",
               },
               headerTintColor: "white",
               headerTitleAlign: "center",

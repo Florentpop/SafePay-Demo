@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: 300,
     height: 250,
-    backgroundColor: "#c8abc5",
+    backgroundColor: "#E4FFFE",
     elevation: 8,
   },
 
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   opacity: {
     width: 150,
     height: 50,
-    backgroundColor: "#00d3ff",
+    backgroundColor: "#5CBE7D",
     alignSelf: "center",
     borderRadius: 30,
     //marginVertical: 25

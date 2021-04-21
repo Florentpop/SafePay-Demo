@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
   },
 
   opacity: {
-    backgroundColor: "#00d3ff",
+    backgroundColor: "#5CBE7D",
     width: 150,
     height: 50,
     borderRadius: 30,

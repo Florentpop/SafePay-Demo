@@ -6,7 +6,7 @@ const Select = ({ navigation }) => {
   const [selectedValue, setSelectedValue] = useState("merchandise");
   return (
     <View style={styles.mainContainer}>
-      <StatusBar barStyle="dark-content" backgroundColor="#4470da" />
+      <StatusBar barStyle="dark-content" backgroundColor="#5CBE7D" />
       <View style={styles.type}>
         <Text style={styles.typeText}>What type of Transaction?</Text>
         <View style={styles.picker}>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
 
   touchable1: {
-    backgroundColor: "#00d3ff",
+    backgroundColor: "#5CBE7D",
     height: 50,
     width: 150,
     borderRadius: 30,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   },
 
   touchable2: {
-    backgroundColor: "#00d3ff",
+    backgroundColor: "#5CBE7D",
     height: 50,
     width: 150,
     borderRadius: 30,

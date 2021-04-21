@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 150,
     width: 300,
-    backgroundColor: "#c8abc5",
+    backgroundColor: "#00C598",
     borderRadius: 10,
     elevation: 45,
     //shadowColor: "black",
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
 
   confirmOpacity: {
-    backgroundColor: "#00d3ff",
+    backgroundColor: "#5CBE7D",
     width: 150,
     height: 50,
     borderRadius: 30,
