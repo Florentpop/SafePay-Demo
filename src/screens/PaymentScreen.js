@@ -4,14 +4,49 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
-  Picker,
   StyleSheet,
-  ScrollView,
 } from "react-native";
 import { connect } from "react-redux";
+import RNWeb from "../../RNWeb";
 
 function PaymentScreen({ navigation, route }) {
-  const [selectedValue, setSelectedValue] = useState("Network");
+  const [momoUri, setMomoUri] = useState(null);
+
+  function handleOnChangeText(text) {
+    if (text.length === 10) {
+      let data = {
+        tx_ref: "AW-15" + (1000 + Math.floor(Math.random * 100000)),
+        amount: "10",
+        currency: "GHS",
+        network: "MTN",
+        email: "developerkupoe@gmail.com",
+        phone_number: text,
+        redirect_url: "https://codetraingh.com",
+      };
+
+      fetch("https://api.flutterwave.com/v3/charges?type=mobile_money_ghana", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer FLWSECK_TEST-bfd2a1388892054fe8d30fb79a926a69-X",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+          setMomoUri(data.meta.authorization.redirect);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  }
+
+  function closeWebView() {
+    setMomoUri(null);
+  }
 
   return (
     <View style={styles.parentContainer}>
@@ -22,36 +57,27 @@ function PaymentScreen({ navigation, route }) {
         </Text>
       </View>
 
-      <View style={styles.momoTextContainer}>
-        <Text style={styles.momoText}>
-          Enter your mobile money{"\n"}number and provider to start{"\n"}the
-          payment
-        </Text>
-      </View>
-
-      <View style={styles.inputContainer}>
+      <View style={styles.container}>
         <TextInput
-          placeholder="Enter Mobile Money Number"
-          keyboardType="numeric"
-          style={styles.input}
+          placeholder="Enter Mobile Money Number to Pay"
+          onChangeText={handleOnChangeText}
+          style={{
+            backgroundColor: "lightgrey",
+            fontSize: 18,
+            textAlign: "center",
+            borderRadius: 5,
+            marginHorizontal: 30,
+            height: 50,
+            width: 300,
+          }}
         />
-      </View>
+        <Text style={{ textAlign: "center", paddingTop: 10, color: "grey" }}>
+          (If you are seller, enter buyer's phone number)
+        </Text>
 
-      <View style={styles.picker}>
-        <Picker
-          selectedValue={selectedValue}
-          style={{ height: 50, width: 300 }}
-          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-        >
-          <Picker.Item
-            label="Choose Provider"
-            value="Choose Provider"
-            color="grey"
-          />
-          <Picker.Item label="MTN" value="MTN" color="blue" />
-          <Picker.Item label="AirtelTigo" value="AirtelTigo" color="blue" />
-          <Picker.Item label="Vodafone" value="Vodafone" color="blue" />
-        </Picker>
+        {momoUri !== null && (
+          <RNWeb uri={momoUri} closeWebView={closeWebView} />
+        )}
       </View>
 
       <View style={styles.confirmContainer}>
