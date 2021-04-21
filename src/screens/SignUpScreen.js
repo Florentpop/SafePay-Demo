@@ -19,6 +19,7 @@ import { connect } from "react-redux";
 import {
   createEmailAccount,
   registerError,
+  addCustomer,
 } from "../../src/components/redux/actions/authActions";
 
 class SignUpScreen extends Component {
@@ -44,7 +45,14 @@ class SignUpScreen extends Component {
       this.props.registerError("Passwords do not match");
       return;
     }
+    const data = {
+      name: this.state.name,
+      number: this.state.number,
+    };
+
     this.props.createEmailAccount(this.state.email, this.state.password);
+
+    this.props.addCustomer(data);
   };
 
   render() {
@@ -270,6 +278,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { createEmailAccount, registerError })(
-  SignUpScreen
-);
+function mapDispatchToProps() {
+  return {
+    createEmailAccount,
+    registerError,
+    addCustomer,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps())(SignUpScreen);

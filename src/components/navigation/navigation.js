@@ -9,7 +9,8 @@ import SignUpScreen from "../../../src/screens/SignUpScreen";
 import HomeScreen from "../../../src/screens/HomeScreen";
 import GetStarted from "../../../src/screens/GetStartedScreen";
 import Select from "../../../src/screens/OptionScreen";
-import Details from "../../../src/screens/TransactionDetailScreen";
+import Details from "../../../src/screens/BuyerDetailScreen";
+import Detail from "../../../src/screens/SellerDetailScreen";
 import Summary from "../../../src/screens/SummaryScreen";
 import Payment from "../../../src/screens/PaymentScreen";
 import Alert from "../../../src/screens/AlertScreen";
@@ -76,6 +77,19 @@ function AppContainer({ auth }) {
             }}
             name="Details"
             component={Details}
+          />
+
+          <Stack.Screen
+            options={{
+              headerTitle: "Transaction Details",
+              headerStyle: {
+                backgroundColor: "#4470da",
+              },
+              headerTintColor: "white",
+              headerTitleAlign: "center",
+            }}
+            name="Detail"
+            component={Detail}
           />
 
           <Stack.Screen

@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: 300,
     height: 250,
-    backgroundColor: "white",
+    backgroundColor: "#c8abc5",
     elevation: 8,
   },
 
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     paddingBottom: 20,
+    color: "#0f184b",
   },
 
   alertTxt: {

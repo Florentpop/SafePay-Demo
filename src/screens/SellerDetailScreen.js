@@ -8,10 +8,10 @@ import {
   ScrollView,
 } from "react-native";
 import { connect } from "react-redux";
-import { transactions } from "../../src/components/redux/actions/authActions";
-import { addTransaction } from "../../src/components/redux/actions/authActions";
+import { transactions } from "../components/redux/actions/authActions";
+import { addTransaction } from "../components/redux/actions/authActions";
 
-class Details extends Component {
+class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,9 +77,7 @@ class Details extends Component {
       <ScrollView>
         <View style={styles.detailsContainer}>
           <View style={styles.buyingContainer}>
-            <Text style={styles.buyingText}>
-              Name of company you dealing with
-            </Text>
+            <Text style={styles.buyingText}>Name of your company</Text>
 
             <TextInput
               style={styles.inputText}
@@ -106,7 +104,7 @@ class Details extends Component {
           </View>
 
           <View style={styles.buyingContainer}>
-            <Text style={styles.buyingText}>What are you buying?</Text>
+            <Text style={styles.buyingText}>What are you selling?</Text>
 
             <TextInput
               style={styles.inputText}
@@ -289,4 +287,4 @@ const mapDispatchToProps = () => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps())(Details);
+export default connect(mapStateToProps, mapDispatchToProps())(Detail);

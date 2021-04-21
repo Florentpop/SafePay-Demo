@@ -91,9 +91,13 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 150,
     width: 300,
-    backgroundColor: "white",
-    elevation: 25,
-    shadowColor: "#DEF5FA",
+    backgroundColor: "#c8abc5",
+    borderRadius: 10,
+    elevation: 45,
+    //shadowColor: "black",
+    shadowColor: "grey",
+    shadowOpacity: 0.27,
+    shadowRadius: 10.65,
   },
 
   amountText: {
@@ -101,7 +105,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingTop: 55,
     fontWeight: "bold",
-    color: "#423706",
+    color: "#0f184b",
   },
 
   momoTextContainer: {

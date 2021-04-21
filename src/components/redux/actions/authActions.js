@@ -36,6 +36,29 @@ export function logout() {
   };
 }
 
+export const addCustomer = (customer) => {
+  return (dispatch, state, { getFirebase, getFirestore }) => {
+    let user = getFirebase()
+      .auth()
+      .createUserWithEmailAndPassword(email, customer.password);
+
+    getFirestore()
+      .collection("customers")
+      .doc(user.user.uid)
+      .set({
+        name: customer.name,
+        number: customer.number,
+      })
+      .value.then((doc) => {
+        console.log(doc);
+        alert("Customer Sent");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
 export const addSummary = (summary) => {
   return (dispatch, state, { getFirestore }) => {
     getFirestore()
