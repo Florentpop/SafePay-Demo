@@ -19,6 +19,7 @@ import { connect } from "react-redux";
 import {
   createEmailAccount,
   registerError,
+  addCustomer,
 } from "../../src/components/redux/actions/authActions";
 
 class SignUpScreen extends Component {
@@ -44,7 +45,14 @@ class SignUpScreen extends Component {
       this.props.registerError("Passwords do not match");
       return;
     }
+    const data = {
+      name: this.state.name,
+      number: this.state.number,
+    };
+
     this.props.createEmailAccount(this.state.email, this.state.password);
+
+    this.props.addCustomer(data);
   };
 
   render() {
@@ -56,7 +64,7 @@ class SignUpScreen extends Component {
         }}
       >
         <View style={styles.container}>
-          <StatusBar backgroundColor="#00B0FF" barStyle="light-content" />
+          <StatusBar backgroundColor="#5CBE7D" barStyle="light-content" />
           <View style={styles.header}>
             <Text style={styles.text_header}>Register Now</Text>
           </View>
@@ -154,7 +162,7 @@ class SignUpScreen extends Component {
 
                 <View style={styles.button}>
                   <LinearGradient
-                    colors={["#48c6ef", "#6f86d6"]}
+                    colors={["#5CBE7D", "#5CBE7D"]}
                     style={styles.signIn}
                   >
                     <TouchableOpacity onPress={this.handleOnSubmit}>
@@ -177,6 +185,9 @@ class SignUpScreen extends Component {
                     <Text style={styles.createAccountText}>SignIn</Text>
                   </TouchableOpacity>
                 </View>
+                <Text style={styles.policy}>
+                  By signing up you agree to our Terms and Privacy Policy
+                </Text>
               </ScrollView>
             </View>
           </Animatable.View>
@@ -189,7 +200,7 @@ class SignUpScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#00B0FF",
+    backgroundColor: "#5CBE7D",
   },
   header: {
     flex: 1,
@@ -199,7 +210,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 4,
-    backgroundColor: "#fff",
+    backgroundColor: "#6AF1F2",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
@@ -228,6 +239,10 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "ios" ? 0 : -12,
     paddingLeft: 10,
     color: "#05375a",
+  },
+
+  policy: {
+    textAlign: "center",
   },
   button: {
     alignItems: "center",
@@ -258,7 +273,7 @@ const styles = StyleSheet.create({
   },
 
   createAccountText: {
-    color: "#00d3ff",
+    color: "pink",
     fontSize: 16,
     paddingTop: 19,
     justifyContent: "center",
@@ -271,6 +286,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { createEmailAccount, registerError })(
-  SignUpScreen
-);
+function mapDispatchToProps() {
+  return {
+    createEmailAccount,
+    registerError,
+    addCustomer,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps())(SignUpScreen);

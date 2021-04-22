@@ -75,7 +75,7 @@ class LogInScreen extends Component {
         }}
       >
         <View style={styles.container}>
-          <StatusBar backgroundColor="#00B0FF" barStyle="light-content" />
+          <StatusBar backgroundColor="#5CBE7D" barStyle="light-content" />
           <View style={styles.header}>
             <Text style={styles.text_header}>SafePay</Text>
           </View>
@@ -138,7 +138,7 @@ class LogInScreen extends Component {
 
               <View style={styles.button}>
                 <LinearGradient
-                  colors={["#48c6ef", "#6f86d6"]}
+                  colors={["#5CBE7D", "#5CBE7D"]}
                   style={styles.signIn}
                 >
                   <TouchableOpacity onPress={this.handleOnSubmit}>
@@ -170,7 +170,7 @@ class LogInScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#00B0FF",
+    backgroundColor: "#5CBE7D",
   },
   header: {
     flex: 1,
@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 3,
-    backgroundColor: "#fff",
+    backgroundColor: "#6AF1F2",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   text_footer: {
-    color: "#05375a",
+    color: "#0f184b",
     fontSize: 18,
   },
   action: {
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: Platform.OS === "ios" ? 0 : -12,
     paddingLeft: 10,
-    color: "#05375a",
+    color: "#0f184b",
   },
   button: {
     alignItems: "center",
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
   },
 
   createAccountText: {
-    color: "#00d3ff",
+    color: "pink",
     fontSize: 16,
     paddingTop: 30,
     justifyContent: "center",
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
   },
 
   forgotPasswordText: {
-    color: "#00d3ff",
+    color: "pink",
     fontSize: 13,
   },
 });
