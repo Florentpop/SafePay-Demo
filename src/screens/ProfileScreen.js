@@ -141,6 +141,12 @@ const ProfileScreen = ({ navigation }) => {
             <Text style={styles.menuItemText}>Settings</Text>
           </View>
         </TouchableRipple>
+        <TouchableRipple onPress={() => {}}>
+          <View style={styles.menuItem}>
+            <Ionicons name="log-out" color="#df01af" size={25} />
+            <Text style={styles.menuItemText}>Log Out</Text>
+          </View>
+        </TouchableRipple>
       </View>
     </SafeAreaView>
   );

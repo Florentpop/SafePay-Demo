@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 const initialState = {
   login: false,
   user: null,
+  customers: {},
   summarys: {},
   error: {},
   transactions: {},
@@ -23,19 +24,15 @@ export default (state = initialState, action) => {
     case "LOGIN_ERROR":
       return { ...state, error: { login: action.payload } };
 
-    case "ADD_TRANSACTION":
-      const newTransaction = {
+    case "ADD_CUSTOMER":
+      const newCustomer = {
         id: uuid(),
-        payment: action.payload.overAllPayment,
-        price: action.payload.itemPrice,
-        name: action.payload.companyName,
-        number: action.payload.sellerNumber,
-        item: action.payload.itemName,
-        description: action.payload.itemDescription,
+        name: action.payload.name,
+        number: action.payload.number,
       };
       return {
         ...state,
-        transactions: [...state.transactions, newTransaction],
+        customers: [...state.customers, newCustomer],
       };
 
     case "ADD_SUMMARY":

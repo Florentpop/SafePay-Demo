@@ -52,7 +52,7 @@ class SummaryScreen extends Component {
 
         <View style={styles.sellerContainer}>
           <Text style={styles.dealingText}>
-            You are dealing with :{this.props.transact.companyName}
+            Company name :{this.props.transact.companyName}
           </Text>
           <Text style={styles.numberText}>
             Number:{this.props.transact.sellerNumber}
@@ -64,7 +64,7 @@ class SummaryScreen extends Component {
 
         <View style={styles.itemContainer}>
           <Text style={styles.purchaseText}>
-            Your are purchasing :{this.props.transact.itemName}
+            Item name :{this.props.transact.itemName}
           </Text>
           <Text style={styles.itemText}></Text>
         </View>
@@ -103,9 +103,13 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 150,
     width: 300,
-    backgroundColor: "white",
-    elevation: 25,
-    shadowColor: "#DEF5FA",
+    backgroundColor: "#00C598",
+    borderRadius: 10,
+    elevation: 45,
+    //shadowColor: "black",
+    shadowColor: "blue",
+    shadowOpacity: 5.27,
+    shadowRadius: 4.65,
   },
 
   amountText: {
@@ -114,6 +118,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingTop: 10,
     textAlign: "center",
+    color: "#0f184b",
   },
 
   totalText: {
@@ -121,12 +126,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingBottom: 20,
     textAlign: "center",
+    color: "#0f184b",
   },
 
   safepayText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "blue",
+    color: "#0f184b",
     textAlign: "center",
   },
 
@@ -151,7 +157,7 @@ const styles = StyleSheet.create({
   },
   numberText: {
     fontWeight: "bold",
-    textAlign: "center",
+    marginLeft: 36,
     fontSize: 18,
     color: "#484b5a",
     //paddingLeft: 10,
@@ -199,7 +205,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   opacity: {
-    backgroundColor: "#00d3ff",
+    backgroundColor: "#5CBE7D",
     width: 150,
     height: 50,
     borderRadius: 30,
