@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { connect } from "react-redux";
-import RNWeb from "../../RNWeb";
+import RNWeb from "../screens/RNWeb";
 
 function PaymentScreen({ navigation, route }) {
   const [momoUri, setMomoUri] = useState(null);
@@ -80,7 +80,7 @@ function PaymentScreen({ navigation, route }) {
         )}
       </View>
 
-      <View style={styles.confirmContainer}>
+      {/**  <View style={styles.confirmContainer}>
         <TouchableOpacity
           style={styles.confirmOpacity}
           onPress={() => {
@@ -89,7 +89,7 @@ function PaymentScreen({ navigation, route }) {
         >
           <Text style={styles.confirmText}>Confirm</Text>
         </TouchableOpacity>
-      </View>
+      </View>*/}
     </View>
   );
 }

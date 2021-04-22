@@ -23,7 +23,6 @@ const EditProfileScreen = () => {
   const [image, setImage] = useState(
     "https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_1280.png"
   );
-  const { colors } = useTheme();
 
   const takePhotoFromCamera = () => {
     ImagePicker.openCamera({
@@ -154,89 +153,59 @@ const EditProfileScreen = () => {
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={colors.text} size={20} />
+          <FontAwesome name="user-o" size={20} />
           <TextInput
             placeholder="First Name"
             placeholderTextColor="#666666"
             autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
+            style={styles.textInput}
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={colors.text} size={20} />
+          <FontAwesome name="user-o" size={20} />
           <TextInput
             placeholder="Last Name"
             placeholderTextColor="#666666"
             autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
+            style={styles.textInput}
           />
         </View>
         <View style={styles.action}>
-          <Feather name="phone" color={colors.text} size={20} />
+          <Feather name="phone" size={20} />
           <TextInput
             placeholder="Phone"
             placeholderTextColor="#666666"
             keyboardType="number-pad"
             autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
+            style={styles.textInput}
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="envelope-o" color={colors.text} size={20} />
+          <FontAwesome name="envelope-o" size={20} />
           <TextInput
             placeholder="Email"
             placeholderTextColor="#666666"
             keyboardType="email-address"
             autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
+            style={styles.textInput}
           />
         </View>
         <View style={styles.action}>
-          <FontAwesome name="globe" color={colors.text} size={20} />
+          <FontAwesome name="globe" size={20} />
           <TextInput
             placeholder="Country"
             placeholderTextColor="#666666"
             autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
+            style={styles.textInput}
           />
         </View>
         <View style={styles.action}>
-          <Icon name="map-marker-outline" color={colors.text} size={20} />
+          <Icon name="map-marker-outline" size={20} />
           <TextInput
             placeholder="City"
             placeholderTextColor="#666666"
             autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
+            style={styles.textInput}
           />
         </View>
         <TouchableOpacity style={styles.commandButton} onPress={() => {}}>

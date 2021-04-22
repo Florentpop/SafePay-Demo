@@ -91,25 +91,6 @@ const ProfileScreen = ({ navigation }) => {
         </View>
       </View>
 
-      {/* <View style={styles.infoBoxWrapper}>
-        <View
-          style={[
-            styles.infoBox,
-            {
-              borderRightColor: "#dddddd",
-              borderRightWidth: 1,
-            },
-          ]}
-        >
-          <Title>₹140.50</Title>
-          <Caption>Wallet</Caption>
-        </View>
-        <View style={styles.infoBox}>
-          <Title>12</Title>
-          <Caption>Orders</Caption>
-        </View>
-        </View> */}
-
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
@@ -117,12 +98,7 @@ const ProfileScreen = ({ navigation }) => {
             <Text style={styles.menuItemText}>Your Favorites</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={() => {}}>
-          <View style={styles.menuItem}>
-            <Icon name="credit-card" color="#FF6347" size={25} />
-            <Text style={styles.menuItemText}>Payment</Text>
-          </View>
-        </TouchableRipple>
+
         <TouchableRipple /*onPress={myCustomShare}*/>
           <View style={styles.menuItem}>
             <Icon name="share-outline" color="#FF6347" size={25} />
@@ -143,7 +119,7 @@ const ProfileScreen = ({ navigation }) => {
         </TouchableRipple>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <Ionicons name="log-out" color="#df01af" size={25} />
+            <Ionicons name="log-out" color="#FF6347" size={25} />
             <Text style={styles.menuItemText}>Log Out</Text>
           </View>
         </TouchableRipple>
@@ -175,19 +151,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginBottom: 10,
   },
-  infoBoxWrapper: {
-    borderBottomColor: "#dddddd",
-    borderBottomWidth: 1,
-    borderTopColor: "#dddddd",
-    borderTopWidth: 1,
-    flexDirection: "row",
-    height: 100,
-  },
-  infoBox: {
-    width: "50%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+
   menuWrapper: {
     marginTop: 5,
   },
