@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 150,
     width: 300,
-    backgroundColor: "#00C598",
+    backgroundColor: "#DFA4E8",
     borderRadius: 10,
     elevation: 45,
     //shadowColor: "black",
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingTop: 10,
     textAlign: "center",
-    color: "#0f184b",
+    color: "#7C2F00",
   },
 
   totalText: {
@@ -126,13 +126,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingBottom: 20,
     textAlign: "center",
-    color: "#0f184b",
+    color: "#7C2F00",
   },
 
   safepayText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#0f184b",
+    color: "#7C2F00",
     textAlign: "center",
   },
 
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   opacity: {
-    backgroundColor: "#5CBE7D",
+    backgroundColor: "#06C8F4",
     width: 150,
     height: 50,
     borderRadius: 30,

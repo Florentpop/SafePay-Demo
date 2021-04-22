@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
 
   getStartedOpacity: {
-    backgroundColor: "#5CBE7D",
+    backgroundColor: "#06C8F4",
     width: 150,
     height: 50,
     borderRadius: 30,

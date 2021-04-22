@@ -60,15 +60,20 @@ function PaymentScreen({ navigation, route }) {
       <View style={styles.container}>
         <TextInput
           placeholder="Enter Mobile Money Number to Pay"
+          keyboardType="numeric"
           onChangeText={handleOnChangeText}
           style={{
             backgroundColor: "lightgrey",
             fontSize: 18,
-            textAlign: "center",
+            //textAlign: "center",
+            paddingLeft: 20,
             borderRadius: 5,
             marginHorizontal: 30,
             height: 50,
             width: 300,
+            borderColor: "#06C8F4",
+            borderWidth: 0.5,
+            elevation: 10,
           }}
         />
         <Text style={{ textAlign: "center", paddingTop: 10, color: "grey" }}>
@@ -117,7 +122,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 150,
     width: 300,
-    backgroundColor: "#00C598",
+    backgroundColor: "#DFA4E8",
     borderRadius: 10,
     elevation: 45,
     //shadowColor: "black",
@@ -131,7 +136,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingTop: 55,
     fontWeight: "bold",
-    color: "#0f184b",
+    color: "#7C2F00",
   },
 
   momoTextContainer: {

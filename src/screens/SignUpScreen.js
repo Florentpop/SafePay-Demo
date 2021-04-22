@@ -64,7 +64,7 @@ class SignUpScreen extends Component {
         }}
       >
         <View style={styles.container}>
-          <StatusBar backgroundColor="#5CBE7D" barStyle="light-content" />
+          <StatusBar backgroundColor="#06C8F4" barStyle="light-content" />
           <View style={styles.header}>
             <Text style={styles.text_header}>Register Now</Text>
           </View>
@@ -162,7 +162,7 @@ class SignUpScreen extends Component {
 
                 <View style={styles.button}>
                   <LinearGradient
-                    colors={["#5CBE7D", "#5CBE7D"]}
+                    colors={["#06C8F4", "#06C8F4"]}
                     style={styles.signIn}
                   >
                     <TouchableOpacity onPress={this.handleOnSubmit}>
@@ -200,7 +200,7 @@ class SignUpScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#5CBE7D",
+    backgroundColor: "#06C8F4",
   },
   header: {
     flex: 1,
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 4,
-    backgroundColor: "#6AF1F2",
+    backgroundColor: "#fff",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
   },
 
   createAccountText: {
-    color: "pink",
+    color: "#06C8F4",
     fontSize: 16,
     paddingTop: 19,
     justifyContent: "center",
