@@ -88,6 +88,7 @@ class SignUpScreen extends Component {
                   <Feather name="mail" color="#05375a" size={20} />
                   <TextInput
                     placeholder="Please Enter Your Email Here"
+                    keyboardType="email-address"
                     value={this.state.email}
                     style={styles.textInput}
                     autoCapitalize="none"

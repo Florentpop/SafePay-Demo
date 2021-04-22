@@ -85,11 +85,13 @@ class LogInScreen extends Component {
               {auth.error.login && (
                 <Text style={{ color: "red" }}>{auth.error.login}</Text>
               )}
+
               <Text style={styles.text_footer}>Email</Text>
               <View style={styles.action}>
                 <Feather name="mail" color="#05375a" size={20} />
                 <TextInput
                   placeholder="Please Enter Your Email Here"
+                  keyboardType="email-address"
                   value={this.state.email}
                   onChangeText={(text) => {
                     this.handleUpdateState("email", text);
