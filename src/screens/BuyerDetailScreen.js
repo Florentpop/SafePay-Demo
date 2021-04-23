@@ -195,6 +195,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     fontSize: 15,
     paddingLeft: 10,
+    borderColor: "#06C8F4",
+    borderWidth: 0.5,
+    elevation: 10,
   },
 
   priceContainer: {
@@ -223,6 +226,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     flexDirection: "row",
     paddingLeft: 10,
+    borderColor: "#06C8F4",
+    borderWidth: 0.5,
+    elevation: 10,
   },
 
   numberContainer: {
@@ -253,6 +259,9 @@ const styles = StyleSheet.create({
     textAlignVertical: "top",
     fontSize: 15,
     paddingLeft: 10,
+    borderColor: "#06C8F4",
+    borderWidth: 0.5,
+    elevation: 10,
   },
 
   opacityContainer: {
@@ -261,7 +270,7 @@ const styles = StyleSheet.create({
   },
 
   opacity: {
-    backgroundColor: "#5CBE7D",
+    backgroundColor: "#06C8F4",
     width: 150,
     height: 50,
     borderRadius: 30,

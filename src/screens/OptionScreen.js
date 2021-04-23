@@ -6,13 +6,20 @@ const Select = ({ navigation }) => {
   const [selectedValue, setSelectedValue] = useState("merchandise");
   return (
     <View style={styles.mainContainer}>
-      <StatusBar barStyle="dark-content" backgroundColor="#5CBE7D" />
+      <StatusBar barStyle="dark-content" backgroundColor="#06C8F4" />
       <View style={styles.type}>
         <Text style={styles.typeText}>What type of Transaction?</Text>
         <View style={styles.picker}>
           <Picker
             selectedValue={selectedValue}
-            style={{ height: 50, width: 300, alignContent: "center" }}
+            style={{
+              height: 40,
+              width: 300,
+              marginTop: 5,
+              borderColor: "blue",
+              elevation: 55,
+              borderWidth: 1,
+            }}
             onValueChange={(itemValue, itemIndex) =>
               setSelectedValue(itemValue)
             }
@@ -97,7 +104,7 @@ const styles = StyleSheet.create({
   },
 
   touchable1: {
-    backgroundColor: "#5CBE7D",
+    backgroundColor: "#06C8F4",
     height: 50,
     width: 150,
     borderRadius: 30,
@@ -105,7 +112,7 @@ const styles = StyleSheet.create({
   },
 
   touchable2: {
-    backgroundColor: "#5CBE7D",
+    backgroundColor: "#06C8F4",
     height: 50,
     width: 150,
     borderRadius: 30,
