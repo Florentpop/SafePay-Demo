@@ -3,8 +3,10 @@ import { WebView } from "react-native-webview";
 
 export default class RNWeb extends React.Component {
   //variable to hold reference of the webview
+
   webview = null;
   render() {
+    console.log("momoUrimomoUrimomoUri", this.props.uri);
     return (
       <WebView
         source={{
