@@ -40,7 +40,7 @@ export const addCustomer = (customer) => {
   return (dispatch, state, { getFirebase, getFirestore }) => {
     let user = getFirebase()
       .auth()
-      .createUserWithEmailAndPassword(email, customer.password);
+      .createUserWithEmailAndPassword(customer.email, customer.password);
 
     getFirestore()
       .collection("customers")
@@ -119,5 +119,12 @@ export function total(info) {
   return {
     type: "SEND_SUMMARY",
     info: info,
+  };
+}
+
+export function summary(data) {
+  return {
+    type: "RECEIVE_SUMMARY",
+    data: data,
   };
 }

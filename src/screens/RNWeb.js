@@ -8,7 +8,7 @@ export default class RNWeb extends React.Component {
     return (
       <WebView
         source={{
-          uri: this.props.uri,
+          uri: "https://google.com",
         }}
         style={{ marginTop: 20, marginHorizontal: 15 }}
         originWhitelist={["*"]}

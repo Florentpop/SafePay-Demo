@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   opacity: {
     width: 150,
     height: 50,
-    backgroundColor: "#5CBE7D",
+    backgroundColor: "#06C8F4",
     alignSelf: "center",
     borderRadius: 30,
     //marginVertical: 25

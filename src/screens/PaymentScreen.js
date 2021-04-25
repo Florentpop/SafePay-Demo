@@ -10,13 +10,13 @@ import { connect } from "react-redux";
 import RNWeb from "../screens/RNWeb";
 
 function PaymentScreen({ navigation, route }) {
-  const [momoUri, setMomoUri] = useState(null);
+  const [momoUri, setMomoUri] = useState(true);
 
   function handleOnChangeText(text) {
     if (text.length === 10) {
       let data = {
         tx_ref: "AW-15" + (1000 + Math.floor(Math.random * 100000)),
-        amount: "10",
+        amount: "150",
         currency: "GHS",
         network: "MTN",
         email: "developerkupoe@gmail.com",
@@ -66,7 +66,7 @@ function PaymentScreen({ navigation, route }) {
             backgroundColor: "lightgrey",
             fontSize: 18,
             //textAlign: "center",
-            paddingLeft: 20,
+            paddingLeft: 10,
             borderRadius: 5,
             marginHorizontal: 30,
             height: 50,
@@ -85,7 +85,7 @@ function PaymentScreen({ navigation, route }) {
         )}
       </View>
 
-      {/**  <View style={styles.confirmContainer}>
+      <View style={styles.confirmContainer}>
         <TouchableOpacity
           style={styles.confirmOpacity}
           onPress={() => {
@@ -94,7 +94,7 @@ function PaymentScreen({ navigation, route }) {
         >
           <Text style={styles.confirmText}>Confirm</Text>
         </TouchableOpacity>
-      </View>*/}
+      </View>
     </View>
   );
 }
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   },
 
   confirmOpacity: {
-    backgroundColor: "#5CBE7D",
+    backgroundColor: "#06C8F4",
     width: 150,
     height: 50,
     borderRadius: 30,
