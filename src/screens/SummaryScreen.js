@@ -37,56 +37,62 @@ class SummaryScreen extends Component {
 
     return (
       <View style={styles.mainContainer}>
-        <View style={styles.contentContainer}>
-          <Text style={styles.amountText}>Summary</Text>
+        <View style={styles.gh}>
+          <View style={styles.contentContainer}>
+            <Text style={styles.amountText}>Summary</Text>
 
-          <Text style={styles.totalText}>
-            GH{"\u20B5"}
-            {this.props.transact.itemPrice}
-          </Text>
+            <Text style={styles.totalText}>
+              GH{"\u20B5"}
+              {this.props.transact.itemPrice}
+            </Text>
 
-          <Text style={styles.safepayText}>SafePay fee: 3% of item price</Text>
+            <Text style={styles.safepayText}>
+              SafePay fee: 3% of item price{" "}
+            </Text>
+          </View>
         </View>
 
-        <View style={styles.horizontalLine} />
+        <View style={styles.top}>
+          {/*<View style={styles.horizontalLine} />*/}
 
-        <View style={styles.sellerContainer}>
-          <Text style={styles.dealingText}>
-            Company name :{this.props.transact.companyName}
-          </Text>
-          <Text style={styles.numberText}>
-            Number:{this.props.transact.sellerNumber}
-          </Text>
-          <Text style={styles.companyText}></Text>
-        </View>
+          <View style={styles.sellerContainer}>
+            <Text style={styles.dealingText}>
+              Company Name :{this.props.transact.companyName}
+            </Text>
+            <Text style={styles.numberText}>
+              Number:{this.props.transact.sellerNumber}
+            </Text>
+            <Text style={styles.companyText}></Text>
+          </View>
 
-        <View style={styles.horizontalLine} />
+          <View style={styles.horizontalLine} />
 
-        <View style={styles.itemContainer}>
-          <Text style={styles.purchaseText}>
-            Item name :{this.props.transact.itemName}
-          </Text>
-          <Text style={styles.itemText}></Text>
-        </View>
+          <View style={styles.itemContainer}>
+            <Text style={styles.purchaseText}>
+              Item Name :{this.props.transact.itemName}
+            </Text>
+            <Text style={styles.itemText}></Text>
+          </View>
 
-        <View style={styles.horizontalLine} />
+          <View style={styles.horizontalLine} />
 
-        <View style={styles.descriptionContainer}>
-          <Text style={styles.descriptionText}>
-            Description : {this.props.transact.itemDescription}
-          </Text>
-          <Text style={styles.itemText}></Text>
-        </View>
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.descriptionText}>
+              Description : {this.props.transact.itemDescription}
+            </Text>
+            <Text style={styles.itemText}></Text>
+          </View>
 
-        <View style={styles.opacityContainer}>
-          <TouchableOpacity
-            style={styles.opacity}
-            onPress={() => {
-              this.handleOnSubmit();
-            }}
-          >
-            <Text style={styles.continue}>Continue</Text>
-          </TouchableOpacity>
+          <View style={styles.opacityContainer}>
+            <TouchableOpacity
+              style={styles.opacity}
+              onPress={() => {
+                this.handleOnSubmit();
+              }}
+            >
+              <Text style={styles.continue}>Continue</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
@@ -97,19 +103,41 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     justifyContent: "space-evenly",
+    backgroundColor: "blue",
+  },
+
+  gh: {
+    flex: 2,
+    //backgroundColor: "blue",
+    shadowColor: "#ffffff",
+    shadowOpacity: 7.27,
+    shadowRadius: 4.65,
+    justifyContent: "space-evenly",
+  },
+
+  top: {
+    flex: 3,
+    backgroundColor: "#ffffff",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    justifyContent: "space-evenly",
   },
 
   contentContainer: {
     alignSelf: "center",
     height: 150,
     width: 300,
-    backgroundColor: "#DFA4E8",
+    //backgroundColor: "#DFA4E8",
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderColor: "#fff",
+
     borderRadius: 10,
-    elevation: 45,
+    //elevation: 45,
     //shadowColor: "black",
-    shadowColor: "blue",
-    shadowOpacity: 5.27,
-    shadowRadius: 4.65,
+    // shadowColor: "blue",
+    //shadowOpacity: 5.27,
+    //shadowRadius: 4.65,
   },
 
   amountText: {
@@ -118,7 +146,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingTop: 10,
     textAlign: "center",
-    color: "#7C2F00",
+    color: "#ffffff", //"#7C2F00",
   },
 
   totalText: {
@@ -126,13 +154,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingBottom: 20,
     textAlign: "center",
-    color: "#7C2F00",
+    color: "#ffffff", //"#7C2F00",
   },
 
   safepayText: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#7C2F00",
+    color: "#ffffff", //"#7C2F00",
     textAlign: "center",
   },
 
@@ -145,7 +173,7 @@ const styles = StyleSheet.create({
 
   sellerContainer: {
     //alignSelf: "center",
-    marginTop: -15,
+    marginTop: 5,
   },
   dealingText: {
     paddingBottom: 20,
@@ -205,7 +233,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   opacity: {
-    backgroundColor: "#06C8F4",
+    backgroundColor: "blue",
     width: 150,
     height: 50,
     borderRadius: 30,

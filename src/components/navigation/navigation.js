@@ -97,7 +97,7 @@ function AppContainer({ auth }) {
             options={{
               headerTitle: "Transaction Summary",
               headerStyle: {
-                backgroundColor: "#06C8F4",
+                backgroundColor: "blue",
               },
               headerTintColor: "white",
               headerTitleAlign: "center",

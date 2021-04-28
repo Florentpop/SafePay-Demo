@@ -25,17 +25,14 @@ function PaymentScreen({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={require("../../assets/Safepay.png")}
-        style={styles.header}
-      >
-        <Text style={styles.text_header}>Bringing the Gap of Trust</Text>
-      </ImageBackground>
+      <View style={styles.header}>
+        {/*<Text style={styles.text_header}>Bringing the Gap of Trust</Text>*/}
+      </View>
       <Animatable.View animation="fadeInLeft" style={styles.footer}>
         <KeyboardAwareScrollView style={styles.ontainer}>
           <ImageBackground
             source={require("../../assets/Safepay.png")}
-            style={styles.contentContainer}
+            style={styles.image}
           >
             <Text style={styles.amountText}>
               GH{"\u20B5"}
@@ -70,11 +67,13 @@ function PaymentScreen({ navigation, route }) {
                 isBusy={props.isInitializing}
                 disabled={false}
               >
-                <View style={styles.confirmOpacity}>
-                  <Text style={styles.confirmText}>
-                    {/*Top Up {route.params.data}*/}
-                    Make Payment
-                  </Text>
+                <View style={styles.btn}>
+                  <View style={styles.confirmOpacity}>
+                    <Text style={styles.confirmText}>
+                      {/*Top Up {route.params.data}*/}
+                      Make Payment
+                    </Text>
+                  </View>
                 </View>
               </TouchableOpacity>
             )}
@@ -112,8 +111,9 @@ const styles = StyleSheet.create({
     height: 150,
     width: 300,
     //backgroundColor: "#00C598",
-    borderRadius: 10,
-    elevation: 45,
+    borderRadius: 15,
+    //elevation: 45,
+    overflow: "hidden",
   },
 
   amountText: {
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     alignSelf: "center",
-    marginTop: 105,
+    //marginTop: 105,
   },
 
   confirmText: {
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     paddingHorizontal: 20,
     paddingBottom: 25,
-    paddingTop: 25,
+    //paddingTop: 25,
   },
 
   text_header: {
@@ -157,12 +157,16 @@ const styles = StyleSheet.create({
   },
 
   footer: {
-    flex: 15,
+    flex: 19,
     backgroundColor: "#fff",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
     paddingVertical: 80,
+  },
+
+  btn: {
+    paddingTop: 195,
   },
 });
 
