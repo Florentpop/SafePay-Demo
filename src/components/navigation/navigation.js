@@ -16,6 +16,7 @@ import Payment from "../../../src/screens/PaymentScreen";
 import Alert from "../../../src/screens/AlertScreen";
 import Tabs from "../../../src/screens/TabScreens";
 import EditProfileScreen from "../../../src/screens/EditProfileScreen";
+import HistoryScreen from "../../../src/screens/HistoryScreen";
 
 const Stack = createStackNavigator();
 
@@ -122,7 +123,7 @@ function AppContainer({ auth }) {
             options={{
               headerTitle: "Alert",
               headerStyle: {
-                backgroundColor: "#5CBE7D",
+                backgroundColor: "#06C8F4",
               },
               headerTintColor: "white",
               headerTitleAlign: "center",
