@@ -1,134 +1,119 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  TouchableOpacity,
   TextInput,
+  TouchableOpacity,
+  Alert,
   StyleSheet,
+  Image,
+  ImageBackground,
 } from "react-native";
+import * as Animatable from "react-native-animatable";
+import { ScrollView } from "react-native-gesture-handler";
+
+import { PayWithFlutterwave } from "flutterwave-react-native";
+import uuid from "react-native-uuid";
+
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { connect } from "react-redux";
-import RNWeb from "../screens/RNWeb";
 
 function PaymentScreen({ navigation, route }) {
-  const [momoUri, setMomoUri] = useState(true);
+  const transactionID = uuid.v4();
 
-  function handleOnChangeText(text) {
-    if (text.length === 10) {
-      let data = {
-        tx_ref: "AW-15" + (1000 + Math.floor(Math.random * 100000)),
-        amount: "150",
-        currency: "GHS",
-        network: "MTN",
-        email: "developerkupoe@gmail.com",
-        phone_number: text,
-        redirect_url: "https://codetraingh.com",
-      };
-
-      fetch("https://api.flutterwave.com/v3/charges?type=mobile_money_ghana", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer FLWSECK_TEST-bfd2a1388892054fe8d30fb79a926a69-X",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Success:", data);
-          setMomoUri(data.meta.authorization.redirect);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    }
-  }
-
-  function closeWebView() {
-    setMomoUri(null);
-  }
+  const payAmount = route.params.data;
 
   return (
-    <View style={styles.parentContainer}>
-      <View style={styles.contentContainer}>
-        <Text style={styles.amountText}>
-          GH{"\u20B5"}
-          {route.params.data}
-        </Text>
-      </View>
+    <View style={styles.container}>
+      <ImageBackground
+        source={require("../../assets/Safepay.png")}
+        style={styles.header}
+      >
+        <Text style={styles.text_header}>Bringing the Gap of Trust</Text>
+      </ImageBackground>
+      <Animatable.View animation="fadeInLeft" style={styles.footer}>
+        <KeyboardAwareScrollView style={styles.ontainer}>
+          <ImageBackground
+            source={require("../../assets/Safepay.png")}
+            style={styles.contentContainer}
+          >
+            <Text style={styles.amountText}>
+              GH{"\u20B5"}
+              {route.params.data}
+            </Text>
+          </ImageBackground>
 
-      <View style={styles.container}>
-        <TextInput
-          placeholder="Enter Mobile Money Number to Pay"
-          keyboardType="numeric"
-          onChangeText={handleOnChangeText}
-          style={{
-            backgroundColor: "lightgrey",
-            fontSize: 18,
-            //textAlign: "center",
-            paddingLeft: 10,
-            borderRadius: 5,
-            marginHorizontal: 30,
-            height: 50,
-            width: 300,
-            borderColor: "#06C8F4",
-            borderWidth: 0.5,
-            elevation: 10,
-          }}
-        />
-        <Text style={{ textAlign: "center", paddingTop: 10, color: "grey" }}>
-          (If you are seller, enter buyer's phone number)
-        </Text>
-
-        {momoUri !== null && (
-          <RNWeb uri={momoUri} closeWebView={closeWebView} />
-        )}
-      </View>
-
-      <View style={styles.confirmContainer}>
-        <TouchableOpacity
-          style={styles.confirmOpacity}
-          onPress={() => {
-            navigation.navigate("Alert");
-          }}
-        >
-          <Text style={styles.confirmText}>Confirm</Text>
-        </TouchableOpacity>
-      </View>
+          <PayWithFlutterwave
+            onRedirect={(res) => {
+              const status = res.status;
+              if (status === "successful") {
+                Alert.alert(
+                  `Your Transaction with ID ${res.transaction_id} was Successful`
+                );
+              } else {
+                return Alert.alert("Something Went Wrong");
+              }
+            }}
+            options={{
+              tx_ref: transactionID,
+              authorization: "FLWPUBK_TEST-a232cbe6c1595c2d05c81e28624a905d-X",
+              customer: {
+                email: "customer-email@example.com",
+              },
+              amount: payAmount,
+              currency: "GHS",
+              payment_options: "card",
+            }}
+            customButton={(props) => (
+              <TouchableOpacity
+                onPress={props.onPress}
+                isBusy={props.isInitializing}
+                disabled={false}
+              >
+                <View style={styles.confirmOpacity}>
+                  <Text style={styles.confirmText}>
+                    {/*Top Up {route.params.data}*/}
+                    Make Payment
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            )}
+          />
+        </KeyboardAwareScrollView>
+      </Animatable.View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  parentContainer: {
+  container: {
     flex: 1,
-    justifyContent: "space-evenly",
+    //paddingTop: 40,
+    //justifyContent: "space-evenly",
+    backgroundColor: "#06C8F4",
   },
 
-  paymentText: {
-    color: "#00d3ff",
-    fontSize: 25,
-    fontWeight: "bold",
-    paddingLeft: 30,
-  },
-
-  totalAmount: {
-    backgroundColor: "lightgrey",
-    height: 150,
-    width: 300,
-    alignSelf: "center",
-  },
   contentContainer: {
     alignSelf: "center",
     height: 150,
     width: 300,
-    backgroundColor: "#DFA4E8",
-    borderRadius: 10,
-    elevation: 45,
+    //backgroundColor: "#00C598",
+    borderRadius: 20,
+    //elevation: 45,
     //shadowColor: "black",
     shadowColor: "grey",
     shadowOpacity: 0.27,
     shadowRadius: 10.65,
+    //paddingTop: -80,
+  },
+
+  image: {
+    alignSelf: "center",
+    height: 150,
+    width: 300,
+    //backgroundColor: "#00C598",
+    borderRadius: 10,
+    elevation: 45,
   },
 
   amountText: {
@@ -136,44 +121,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingTop: 55,
     fontWeight: "bold",
-    color: "#7C2F00",
-  },
-
-  momoTextContainer: {
-    alignSelf: "center",
-  },
-
-  momoText: {
-    textAlign: "center",
-    fontSize: 20,
-  },
-
-  input: {
-    width: 300,
-    height: 50,
-    backgroundColor: "lightgrey",
-    marginLeft: 30,
-    borderRadius: 10,
-    paddingLeft: 10,
-    fontSize: 15,
-  },
-
-  picker: {
-    backgroundColor: "lightgrey",
-    borderRadius: 8,
-    height: 50,
-    marginTop: 10,
-    borderRadius: 10,
-    width: 300,
-    marginLeft: 30,
+    color: "#fff",
   },
 
   confirmOpacity: {
     backgroundColor: "#06C8F4",
-    width: 150,
+    color: "#fff",
+    width: 170,
     height: 50,
-    borderRadius: 30,
+    borderRadius: 25,
     alignSelf: "center",
+    marginTop: 105,
   },
 
   confirmText: {
@@ -181,7 +139,30 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingTop: 12,
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 18,
+  },
+  header: {
+    flex: 1,
+    justifyContent: "flex-end",
+    paddingHorizontal: 20,
+    paddingBottom: 25,
+    paddingTop: 25,
+  },
+
+  text_header: {
+    color: "#fff",
+    //fontWeight: "bold",
+    fontSize: 18,
+    textAlign: "center",
+  },
+
+  footer: {
+    flex: 15,
+    backgroundColor: "#fff",
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    paddingHorizontal: 20,
+    paddingVertical: 80,
   },
 });
 

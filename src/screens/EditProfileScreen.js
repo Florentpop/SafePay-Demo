@@ -20,93 +20,15 @@ import Animated from "react-native-reanimated";
 import ImagePicker from "react-native-image-crop-picker";
 
 const EditProfileScreen = () => {
-  const [image, setImage] = useState(
-    "https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_1280.png"
-  );
-
-  const takePhotoFromCamera = () => {
-    ImagePicker.openCamera({
-      compressImageMaxWidth: 300,
-      compressImageMaxHeight: 300,
-      cropping: true,
-      compressImageQuality: 0.7,
-    }).then((image) => {
-      console.log(image);
-      setImage(image.path);
-      this.bs.current.snapTo(1);
-    });
-  };
-
-  const choosePhotoFromLibrary = () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 300,
-      cropping: true,
-      compressImageQuality: 0.7,
-    }).then((image) => {
-      console.log(image);
-      setImage(image.path);
-      this.bs.current.snapTo(1);
-    });
-  };
-
-  renderInner = () => (
-    <View style={styles.panel}>
-      <View style={{ alignItems: "center" }}>
-        <Text style={styles.panelTitle}>Upload Photo</Text>
-        <Text style={styles.panelSubtitle}>Choose Your Profile Picture</Text>
-      </View>
-      <TouchableOpacity
-        style={styles.panelButton}
-        onPress={takePhotoFromCamera}
-      >
-        <Text style={styles.panelButtonTitle}>Take Photo</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.panelButton}
-        onPress={choosePhotoFromLibrary}
-      >
-        <Text style={styles.panelButtonTitle}>Choose From Library</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.panelButton}
-        onPress={() => this.bs.current.snapTo(1)}
-      >
-        <Text style={styles.panelButtonTitle}>Cancel</Text>
-      </TouchableOpacity>
-    </View>
-  );
-
-  renderHeader = () => (
-    <View style={styles.header}>
-      <View style={styles.panelHeader}>
-        <View style={styles.panelHandle} />
-      </View>
-    </View>
-  );
-
-  bs = React.createRef();
-  fall = new Animated.Value(1);
-
   return (
     <View style={styles.container}>
-      <BottomSheet
-        ref={this.bs}
-        snapPoints={[330, 0]}
-        renderContent={this.renderInner}
-        renderHeader={this.renderHeader}
-        initialSnap={1}
-        callbackNode={this.fall}
-        enabledGestureInteraction={true}
-      />
-      <Animated.View
+      <View
         style={{
           margin: 20,
-          opacity: Animated.add(0.1, Animated.multiply(this.fall, 1.0)),
         }}
       >
         <View style={{ alignItems: "center" }}>
-          <TouchableOpacity onPress={() => this.bs.current.snapTo(0)}>
+          <TouchableOpacity onPress={() => {}}>
             <View
               style={{
                 height: 100,
@@ -118,7 +40,8 @@ const EditProfileScreen = () => {
             >
               <ImageBackground
                 source={{
-                  uri: image,
+                  uri:
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyX1P01Sd9GmmBcwwObUfbLOsFd8-vkDyEZYfcVrqV9_VeoSASUV9wGi4A0CSGqhiZRWI&usqp=CAU",
                 }}
                 style={{ height: 100, width: 100 }}
                 imageStyle={{ borderRadius: 15 }}
@@ -211,7 +134,7 @@ const EditProfileScreen = () => {
         <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
           <Text style={styles.panelButtonTitle}>Submit</Text>
         </TouchableOpacity>
-      </Animated.View>
+      </View>
     </View>
   );
 };
