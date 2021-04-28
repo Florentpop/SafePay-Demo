@@ -31,6 +31,7 @@ class SignUpScreen extends Component {
       password: "",
       confirm: "",
       number: "",
+      uuid: "",
     };
   }
 

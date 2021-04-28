@@ -1,22 +1,37 @@
-import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import React, { Component } from "react";
+import { View, Text, ScrollView, StyleSheet, StatusBar } from "react-native";
+import { connect } from "react-redux";
+import { getSummary } from "../components/redux/actions/authActions";
+import History from "./History";
 
-const HistoryScreen = ({ navigation }) => {
-  return (
-    <View style={StyleSheet.container}>
-      <Text>History Screen</Text>
-      <Button title="Click Here" onPress={() => alert("Button Clicked")} />
-    </View>
-  );
+class HistoryScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {
+    this.getSummary;
+  }
+  render() {
+    return (
+      <ScrollView>
+        <View>
+          <History />
+        </View>
+      </ScrollView>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    history: state.summarys,
+  };
 };
 
-export default HistoryScreen;
+const mapDispatchToProps = () => {
+  return {
+    getSummary,
+  };
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#8fcbbc",
-  },
-});
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryScreen);

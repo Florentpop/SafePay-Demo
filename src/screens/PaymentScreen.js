@@ -45,7 +45,7 @@ function PaymentScreen({ navigation, route }) {
             tx_ref: transactionID,
             authorization: "FLWPUBK_TEST-a232cbe6c1595c2d05c81e28624a905d-X",
             customer: {
-              email: "customer-email@example.com",
+              email: "safepay@gmail.com",
             },
             amount: payAmount,
             currency: "GHS",
@@ -73,7 +73,7 @@ function PaymentScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 3,
     paddingTop: 40,
     //justifyContent: "space-evenly",
   },
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 150,
     width: 300,
-    backgroundColor: "#00C598",
+    backgroundColor: "#DFA4E8",
     borderRadius: 10,
     elevation: 45,
     //shadowColor: "black",
@@ -100,13 +100,14 @@ const styles = StyleSheet.create({
   },
 
   confirmOpacity: {
-    backgroundColor: "#5CBE7D",
+    flex: 1,
+    backgroundColor: "#06C8F4",
     color: "#fff",
     width: 170,
     height: 50,
     borderRadius: 25,
     alignSelf: "center",
-    marginTop: 80,
+    marginTop: 230,
   },
 
   confirmText: {

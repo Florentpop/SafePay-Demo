@@ -69,6 +69,7 @@ export const addSummary = (summary) => {
         sellerNumber: summary.sellerNumber,
         itemName: summary.itemName,
         itemDescription: summary.itemDescription,
+        uid: summary.uid,
         createdAt: new Date(),
       })
       .then((doc) => {
@@ -78,6 +79,26 @@ export const addSummary = (summary) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+};
+
+export const getSummary = () => {
+  return (dispatch, state, { getFirestore }) => {
+    getFirestore()
+      .collection("summarys")
+      .get(user.uid)
+      .onSnapshot(
+        (snapshot) => {
+          var summarys = [];
+          snapshot.forEach((doc) => {
+            summarys.push(doc.data());
+          });
+          console.log(summarys);
+          dispatch(summarys(summarys));
+        },
+
+        (error) => {}
+      );
   };
 };
 

@@ -77,6 +77,9 @@ export default (state = initialState, action) => {
     case "SEND_SUMMARY":
       return { ...state, total: action.data };
 
+    case "GET_SUMMARY":
+      return { ...state, summarys: action.data };
+
     default:
       return state;
   }
