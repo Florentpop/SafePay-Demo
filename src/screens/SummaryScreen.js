@@ -26,6 +26,7 @@ class SummaryScreen extends Component {
       sellerNumber: this.props.transact.sellerNumber,
       itemName: this.props.transact.itemName,
       itemDescription: this.props.transact.itemDescription,
+      uid: this.props.transact.uid,
     };
     this.props.addSummary(allSummary);
 

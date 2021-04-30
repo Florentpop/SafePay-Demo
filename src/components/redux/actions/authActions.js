@@ -79,6 +79,7 @@ export const addSummary = (summary) => {
       .catch((error) => {
         console.log(error);
       });
+    despatch(transactions(summary));
   };
 };
 
