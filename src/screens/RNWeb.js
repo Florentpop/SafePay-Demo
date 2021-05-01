@@ -3,14 +3,12 @@ import { WebView } from "react-native-webview";
 
 export default class RNWeb extends React.Component {
   //variable to hold reference of the webview
-
   webview = null;
   render() {
-    console.log("momoUrimomoUrimomoUri", this.props.uri);
     return (
       <WebView
         source={{
-          uri: this.props.uri,
+          uri: "https://google.com",
         }}
         style={{ marginTop: 20, marginHorizontal: 15 }}
         originWhitelist={["*"]}
