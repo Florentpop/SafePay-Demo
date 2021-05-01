@@ -156,7 +156,7 @@ class LogInScreen extends Component {
                   }}
                   style={styles.createAccountOpacity}
                 >
-                  <Text style={styles.createAccountText}>SignUp</Text>
+                  <Text style={styles.createAccountText}>Sign up</Text>
                 </TouchableOpacity>
               </View>
             </View>

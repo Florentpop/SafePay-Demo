@@ -178,6 +178,7 @@ const styles = StyleSheet.create({
     flex: 1,
     //justifyContent: "center",
     padding: 15,
+    backgroundColor: "#fff",
   },
 
   buyingContainer: {
@@ -191,15 +192,17 @@ const styles = StyleSheet.create({
   },
 
   inputText: {
-    backgroundColor: "lightgrey",
-    height: 40,
+    backgroundColor: "#fff",
+    color: "#1F84BD",
+    height: 50,
     width: 330,
-    borderRadius: 8,
+    borderRadius: 20,
     fontSize: 15,
     paddingLeft: 10,
-    borderColor: "#06C8F4",
-    borderWidth: 0.5,
-    elevation: 10,
+    borderColor: "black",
+    borderWidth: 1,
+    //elevation: 10,
+    fontFamily: "Roboto",
   },
 
   priceContainer: {
@@ -222,15 +225,15 @@ const styles = StyleSheet.create({
   },
 
   inputTest: {
-    backgroundColor: "lightgrey",
-    height: 40,
+    backgroundColor: "#fff",
+    height: 50,
     width: 330,
-    borderRadius: 8,
+    borderRadius: 20,
     flexDirection: "row",
     paddingLeft: 10,
-    borderColor: "#06C8F4",
-    borderWidth: 0.5,
-    elevation: 10,
+    borderColor: "black",
+    borderWidth: 1,
+    //elevation: 10,
   },
 
   numberContainer: {
@@ -254,21 +257,21 @@ const styles = StyleSheet.create({
   },
 
   inputTxt: {
-    backgroundColor: "lightgrey",
+    backgroundColor: "#fff",
     height: 80,
     width: 330,
-    borderRadius: 8,
-    textAlignVertical: "top",
-    fontSize: 15,
+    borderRadius: 20,
+    flexDirection: "row",
     paddingLeft: 10,
-    borderColor: "#06C8F4",
-    borderWidth: 0.5,
-    elevation: 10,
+    borderColor: "black",
+    borderWidth: 1,
+    //elevation: 10,
   },
 
   opacityContainer: {
     alignSelf: "center",
-    marginTop: 60,
+    marginTop: 40,
+    flex: 0.2,
   },
 
   opacity: {
