@@ -9,7 +9,10 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { transactions } from "../components/redux/actions/authActions";
-import { addTransaction } from "../components/redux/actions/authActions";
+import {
+  addTransaction,
+  addSummary,
+} from "../components/redux/actions/authActions";
 
 class Details extends Component {
   constructor(props) {
@@ -62,13 +65,12 @@ class Details extends Component {
   }
 
   handleOnSubmit = () => {
+    this.setState({ uid: this.props.userId });
     const data = this.state;
-
-    this.props.transactions(data);
-
-    //this.props.addTransaction(data);
-
-    this.props.navigation.navigate("Summary");
+    console.log("state data", data);
+    // this.props.transactions(data);
+    // this.props.addSummary(data);
+    this.props.navigation.navigate("Summary", { data: data });
   };
 
   render() {
@@ -294,7 +296,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = () => {
   return {
     transactions,
-    addTransaction,
+    //addTransaction,
+    addSummary,
   };
 };
 

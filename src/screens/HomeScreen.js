@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,79 +8,90 @@ import {
   StatusBar,
 } from "react-native";
 import Swiper from "react-native-swiper";
+import { connect } from "react-redux";
 
-const HomeScreen = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-      <View style={styles.sliderContainer}>
-        <Swiper autoplay horizontal={false} height={200} activeDotColor="#fff">
-          <View style={styles.slide}>
-            <Image
-              source={require("../../assets/Escrow-Account.png")}
-              resizeMode="cover"
-              style={styles.sliderImage}
-            />
-          </View>
+class HomeScreen extends Component {
+  constructor(props) {
+    super();
+  }
+  render() {
+    console.log(this.props.user);
+    return (
+      <View style={styles.container}>
+        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+        <View style={styles.sliderContainer}>
+          <Swiper
+            autoplay
+            horizontal={false}
+            height={200}
+            activeDotColor="#fff"
+          >
+            <View style={styles.slide}>
+              <Image
+                source={require("../../assets/Escrow-Account.png")}
+                resizeMode="cover"
+                style={styles.sliderImage}
+              />
+            </View>
 
-          <View style={styles.slide}>
-            <Image
-              source={require("../../assets/customer-with-bags.jpg")}
-              resizeMode="cover"
-              style={styles.sliderImage}
-            />
-          </View>
+            <View style={styles.slide}>
+              <Image
+                source={require("../../assets/customer-with-bags.jpg")}
+                resizeMode="cover"
+                style={styles.sliderImage}
+              />
+            </View>
 
-          <View style={styles.slide}>
-            <Image
-              source={require("../../assets/images1.jpg")}
-              resizeMode="cover"
-              style={styles.sliderImage}
-            />
-          </View>
-        </Swiper>
-      </View>
+            <View style={styles.slide}>
+              <Image
+                source={require("../../assets/images1.jpg")}
+                resizeMode="cover"
+                style={styles.sliderImage}
+              />
+            </View>
+          </Swiper>
+        </View>
 
-      <View style={styles.texts}>
-        <Text
+        <View style={styles.texts}>
+          <Text
+            style={{
+              fontWeight: "200",
+              fontSize: 17,
+              textAlign: "center",
+              letterSpacing: 2,
+              marginTop: 5,
+              margin: 6,
+            }}
+          >
+            A safer way for buyers to pay you with confidence in digital
+            marketplaces.
+          </Text>
+        </View>
+
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.image}
+            source={require("../../assets/wallet.png")}
+          />
+        </View>
+
+        <View
           style={{
             fontWeight: "200",
-            fontSize: 17,
+            //fontSize: 20,
             textAlign: "center",
             letterSpacing: 2,
-            marginTop: 5,
-            margin: 6,
+            marginTop: 25,
+            margin: 10,
+            paddingHorizontal: 20,
           }}
         >
-          A safer way for buyers to pay you with confidence in digital
-          marketplaces.
-        </Text>
-      </View>
+          <Text style={{ fontSize: 15, textAlign: "center", marginBottom: 95 }}>
+            An alternative checkout method on product pages for online stores
+          </Text>
+        </View>
 
-      <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={require("../../assets/wallet.png")}
-        />
-      </View>
-
-      <View
-        style={{
-          fontWeight: "200",
-          //fontSize: 20,
-          textAlign: "center",
-          letterSpacing: 2,
-          marginTop: 25,
-          margin: 10,
-          paddingHorizontal: 20,
-        }}
-      >
-        <Text style={{ fontSize: 15, textAlign: "center", marginBottom: 95 }}>
-          An alternative checkout method on product pages for online stores
-        </Text>
-      </View>
-
-      {/*<View style={styles.regBtn}>
+        {/*<View style={styles.regBtn}>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("GetStarted");
@@ -90,11 +101,10 @@ const HomeScreen = ({ navigation }) => {
           <Text style={styles.regText}>Start SafePay</Text>
         </TouchableOpacity>
         </View>*/}
-    </View>
-  );
-};
-
-export default HomeScreen;
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -162,3 +172,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, null)(HomeScreen);

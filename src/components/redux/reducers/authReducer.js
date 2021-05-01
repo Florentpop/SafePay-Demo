@@ -6,13 +6,22 @@ const initialState = {
   customers: {},
   summarys: {},
   error: {},
-  transactions: {},
+  transactions: [],
   total: {},
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "ADD_TRANSACTIONS":
+      console.log("hhdghdf");
+      // return {
+      //   ...state,
+      //   transactions: [...state.transactions, action.data],
+      // };
+      return state;
+
     case "LOGGED_IN":
+      console.log("logged in");
       return { ...state, login: true, user: action.payload };
 
     case "LOGGED_OUT":
@@ -36,6 +45,7 @@ export default (state = initialState, action) => {
       };
 
     case "ADD_SUMMARY":
+      console.log("add summary called");
       const newSummary = {
         id: uuid(),
         payment: action.payload.overAllPayment,
@@ -65,11 +75,11 @@ export default (state = initialState, action) => {
           return transaction;
         }
       });
-      return { ...state, transactions: updatedTransactionsInfo };
+      return { ...state, transactions: updatedTransactionsInfo };*/
+      }
 
     case "SET_ALL_TRANSACTIONS":
-    return { transactions: action.payload };*/
-      }
+      return { transactions: action.payload };
 
     case "SEND_DATA":
       return { ...state, transactions: action.data };
