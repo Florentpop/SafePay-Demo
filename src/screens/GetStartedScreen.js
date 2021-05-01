@@ -1,13 +1,21 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  StatusBar,
+} from "react-native";
 
 export default function GetStarted({ navigation }) {
   return (
     <View style={styles.parentContainer}>
+      <StatusBar barStyle="dark-content" backgroundColor="#f2f2f2" />
       <View style={styles.imageContainer}>
         <Image
           style={{ width: 230, height: 230 }}
-          source={require("../assets/images/safe.jpg")}
+          source={require("../../assets/images/safe.jpg")}
         />
       </View>
 
@@ -47,12 +55,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingHorizontal: 20,
     textAlign: "center",
+    marginBottom: 15,
   },
 
-  getStartedContainer: {},
+  getStartedContainer: {
+    paddingBottom: 90,
+  },
 
   getStartedOpacity: {
-    backgroundColor: "#00d3ff",
+    backgroundColor: "#06C8F4",
     width: 150,
     height: 50,
     borderRadius: 30,
@@ -61,7 +72,7 @@ const styles = StyleSheet.create({
   getStarted: {
     color: "white",
     textAlign: "center",
-    paddingTop: 15,
+    paddingTop: 13,
     fontWeight: "bold",
     fontSize: 16,
   },

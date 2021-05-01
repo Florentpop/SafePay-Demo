@@ -1,48 +1,37 @@
 import React, { useState } from "react";
-import { View, Picker, StyleSheet, Text } from "react-native";
+import { View, Picker, StyleSheet, Text, StatusBar } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Select = ({ navigation }) => {
-  const [selectedValue, setSelectedValue] = useState("merchandise", "buyer");
+  const [selectedValue, setSelectedValue] = useState("merchandise");
   return (
     <View style={styles.mainContainer}>
+      <StatusBar barStyle="dark-content" backgroundColor="#06C8F4" />
       <View style={styles.type}>
         <Text style={styles.typeText}>What type of Transaction?</Text>
         <View style={styles.picker}>
           <Picker
             selectedValue={selectedValue}
-            style={{ height: 50, width: 330 }}
+            style={{
+              height: 40,
+              width: 300,
+              marginTop: 5,
+              borderColor: "blue",
+              elevation: 55,
+              borderWidth: 1,
+            }}
             onValueChange={(itemValue, itemIndex) =>
               setSelectedValue(itemValue)
             }
           >
             <Picker.Item label="Merchandise" value="merchandise" color="blue" />
-            <Picker.Item label="Other" value="other" color="gray" />
           </Picker>
         </View>
       </View>
 
       <View style={styles.select}>
         <Text style={styles.whoText}>Who are you?</Text>
-
-        <View style={styles.picker}>
-          <Picker
-            textStyle={{ fontSize: 18 }}
-            selectedValue={selectedValue}
-            style={{
-              height: 50,
-              width: 330,
-              borderWidth: 1,
-              borderColor: "red",
-            }}
-            onValueChange={(itemValue, itemIndex) =>
-              setSelectedValue(itemValue)
-            }
-          >
-            <Picker.Item label="Buyer" value="buyer" color="blue" />
-            <Picker.Item label="Seller" value="seller" color="blue" />
-          </Picker>
-        </View>
+        <Text style={styles.selectText}>(select below)</Text>
       </View>
 
       <View style={styles.opacity}>
@@ -50,9 +39,18 @@ const Select = ({ navigation }) => {
           onPress={() => {
             navigation.navigate("Details");
           }}
-          style={styles.touchable}
+          style={styles.touchable1}
         >
-          <Text style={styles.continueText}>Continue</Text>
+          <Text style={styles.continueText}>Buyer</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Detail");
+          }}
+          style={styles.touchable2}
+        >
+          <Text style={styles.continueText}>Seller</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -62,25 +60,32 @@ const Select = ({ navigation }) => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    paddingTop: 80,
-    alignItems: "center",
+    paddingTop: 40,
+    //alignItems: "center",
     justifyContent: "space-between",
   },
 
-  type: {
-    flex: 1,
-  },
+  type: {},
 
   typeText: {
     fontSize: 20,
+    marginLeft: 20,
   },
 
   select: {
-    flex: 2,
+    flexDirection: "row",
+    marginLeft: 20,
   },
 
   whoText: {
     fontSize: 20,
+  },
+
+  selectText: {
+    fontSize: 14,
+    paddingLeft: 8,
+    paddingTop: 5,
+    color: "grey",
   },
 
   picker: {
@@ -88,14 +93,26 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     height: 50,
     marginTop: 10,
+    width: 300,
+    marginLeft: 20,
   },
 
   opacity: {
-    flex: 0.5,
+    flexDirection: "row",
+    marginLeft: 20,
+    marginBottom: 50,
   },
 
-  touchable: {
-    backgroundColor: "#00d3ff",
+  touchable1: {
+    backgroundColor: "#06C8F4",
+    height: 50,
+    width: 150,
+    borderRadius: 30,
+    marginHorizontal: 10,
+  },
+
+  touchable2: {
+    backgroundColor: "#06C8F4",
     height: 50,
     width: 150,
     borderRadius: 30,
