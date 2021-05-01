@@ -19,7 +19,6 @@ import { connect } from "react-redux";
 import {
   createEmailAccount,
   registerError,
-  addCustomer,
 } from "../../src/components/redux/actions/authActions";
 
 class SignUpScreen extends Component {
@@ -51,9 +50,9 @@ class SignUpScreen extends Component {
       number: this.state.number,
     };
 
-    this.props.createEmailAccount(this.state.email, this.state.password);
-
-    this.props.addCustomer(data);
+    this.props.createEmailAccount(this.state.name, this.state.number, this.state.email, this.state.password, () => {
+      //this.props.addCustomer(data);
+    });
   };
 
   render() {
@@ -291,7 +290,6 @@ function mapDispatchToProps() {
   return {
     createEmailAccount,
     registerError,
-    addCustomer,
   };
 }
 

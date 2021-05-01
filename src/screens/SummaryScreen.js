@@ -13,20 +13,21 @@ class SummaryScreen extends Component {
 
     this.props.total(data);
 
-    const sale = this.props.transact.itemPrice;
+    const sale = this.props.route.params.data.itemPrice;
     const percent = 3;
 
     const percentage = (percent / 100) * sale;
-    const overAllPayment = Number(this.props.transact.itemPrice) + percentage;
-    console.log(overAllPayment);
+    const overAllPayment =
+      Number(this.props.route.params.data.itemPrice) + percentage;
+    console.log("overall", overAllPayment);
 
     const allSummary = {
       overAllPayment,
-      companyName: this.props.transact.companyName,
-      sellerNumber: this.props.transact.sellerNumber,
-      itemName: this.props.transact.itemName,
-      itemDescription: this.props.transact.itemDescription,
-      uid: this.props.transact.uid,
+      companyName: this.props.route.params.data.companyName,
+      sellerNumber: this.props.route.params.data.sellerNumber,
+      itemName: this.props.route.params.data.itemName,
+      itemDescription: this.props.route.params.data.itemDescription,
+      uid: this.props.userId,
     };
     this.props.addSummary(allSummary);
 
@@ -34,6 +35,7 @@ class SummaryScreen extends Component {
   };
 
   render() {
+    console.log("route data", this.props.route.params.data);
     console.log("summary", this.props.transact);
 
     return (
@@ -43,7 +45,7 @@ class SummaryScreen extends Component {
 
           <Text style={styles.totalText}>
             GH{"\u20B5"}
-            {this.props.transact.itemPrice}
+            {this.props.route.params.data.itemPrice}
           </Text>
 
           <Text style={styles.safepayText}>SafePay fee: 3% of item price</Text>
@@ -53,10 +55,10 @@ class SummaryScreen extends Component {
 
         <View style={styles.sellerContainer}>
           <Text style={styles.dealingText}>
-            Company name :{this.props.transact.companyName}
+            Company name :{this.props.route.params.data.companyName}
           </Text>
           <Text style={styles.numberText}>
-            Number:{this.props.transact.sellerNumber}
+            Number:{this.props.route.params.data.sellerNumber}
           </Text>
           <Text style={styles.companyText}></Text>
         </View>
@@ -65,7 +67,7 @@ class SummaryScreen extends Component {
 
         <View style={styles.itemContainer}>
           <Text style={styles.purchaseText}>
-            Item name :{this.props.transact.itemName}
+            Item name :{this.props.route.params.data.itemName}
           </Text>
           <Text style={styles.itemText}></Text>
         </View>
@@ -74,7 +76,7 @@ class SummaryScreen extends Component {
 
         <View style={styles.descriptionContainer}>
           <Text style={styles.descriptionText}>
-            Description : {this.props.transact.itemDescription}
+            Description : {this.props.route.params.data.itemDescription}
           </Text>
           <Text style={styles.itemText}></Text>
         </View>
@@ -223,6 +225,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     transact: state.transactions,
+    userId: state.user.user.uid,
   };
 };
 

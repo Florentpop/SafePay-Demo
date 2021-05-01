@@ -1,23 +1,61 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, StyleSheet, StatusBar } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  StatusBar,
+  FlatList,
+} from "react-native";
 import { connect } from "react-redux";
-import { getSummary } from "../components/redux/actions/authActions";
+import {
+  getSummary,
+  addTransactions,
+} from "../components/redux/actions/authActions";
 import History from "./History";
+import firebase from "firebase";
 
 class HistoryScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      history: [],
+    };
   }
   componentDidMount() {
-    this.getSummary;
+    const getHistory = async () => {
+      const db = firebase.firestore();
+      const transactionRef = db.collection("summarys");
+      const transactions = await transactionRef.get();
+      // console.log("transanctions", transactions);
+
+      transactions.forEach((doc) => {
+        this.setState({ history: [...this.state.history, doc.data()] });
+      });
+    };
+    getHistory();
   }
+
+  // getData = async () => {
+  //   const db = firebase.firestore();
+  //   const transactionRef = db.collection("summarys");
+  //   const transactions = await transactionRef.get();
+
+  //   // transactions.forEach((doc) => {
+  //   //   this.props.addTransactions(doc.data());
+  //   // });
+  // };
   render() {
+    console.log("state", this.state.history);
+    // console.log("all summarys", this.props.history);
+    // console.log(this.props.transactions);
     return (
-      <ScrollView>
-        <View>
-          <History />
-        </View>
-      </ScrollView>
+      <View>
+        <FlatList
+          data={this.state.history}
+          renderItem={({ item }) => <History item={item} />}
+        />
+      </View>
     );
   }
 }
@@ -25,12 +63,17 @@ class HistoryScreen extends Component {
 const mapStateToProps = (state) => {
   return {
     history: state.summarys,
+    transactions: state.transactions,
+    // .filter((item) => {
+    //   return item.uid === state.user.user.uid;
+    // }),
   };
 };
 
 const mapDispatchToProps = () => {
   return {
     getSummary,
+    addTransactions,
   };
 };
 

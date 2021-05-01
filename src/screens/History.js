@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 import { View, Text, ScrollView, StyleSheet, StatusBar } from "react-native";
 
 class History extends Component {
@@ -7,30 +8,27 @@ class History extends Component {
   }
 
   render() {
+    // console.log(this.props.item);
     // const data = ({itemName, overAllPayment, companyName, sellerNumber, itemDescription, dateTime})
     return (
-      <ScrollView>
-        <View style={styles.mainContainer}>
-          <StatusBar barStyle="dark-content" backgroundColor="#06C8F4" />
-          <View style={styles.contentContainer}>
-            <Text style={styles.amountText}>
-              Item bought/sold:{this.props.name}
-            </Text>
-            <Text style={styles.dateTime}>
-              Total item price:{this.props.price}
-            </Text>
-            <Text style={styles.totalText}>
-              Name of company:{this.props.company}
-            </Text>
-            <Text style={styles.dateTime}>
-              Company number:{this.props.number}
-            </Text>
-            <Text style={styles.dateTime}>Date & Time:{this.props.date}</Text>
-          </View>
-
-          <View style={styles.horizontalLine} />
+      <View style={styles.mainContainer}>
+        <StatusBar barStyle="dark-content" backgroundColor="#06C8F4" />
+        <View style={styles.contentContainer}>
+          <Text style={styles.amountText}>{this.props.item.itemName}</Text>
+          <Text style={styles.dateTime}>
+            GH{"\u20B5"}
+            {this.props.item.overAllPayment}
+          </Text>
+          <Text style={styles.totalText}>{this.props.item.companyName}</Text>
+          <Text style={styles.dateTime}>{this.props.item.sellerNumber}</Text>
+          <Text style={styles.dateTime}>{this.props.item.itemDescription}</Text>
+          <Text style={styles.dateTime}>
+            {moment(this.props.item.createdAt.toDate()).calendar()}
+          </Text>
         </View>
-      </ScrollView>
+
+        <View style={styles.horizontalLine} />
+      </View>
     );
   }
 }
@@ -44,7 +42,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     marginTop: 20,
     alignSelf: "center",
-    height: 140,
+    height: 160,
     width: 350,
     backgroundColor: "#F3F3CC",
     borderRadius: 10,

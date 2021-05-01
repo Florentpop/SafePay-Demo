@@ -23,7 +23,6 @@ class Details extends Component {
       itemName: "",
       itemPrice: "",
       itemDescription: "",
-      uid: "",
     };
     this.itemName = this.itemName.bind(this);
     this.itemPrice = this.itemPrice.bind(this);
@@ -68,8 +67,9 @@ class Details extends Component {
   handleOnSubmit = () => {
     this.setState({ uid: this.props.userId });
     const data = this.state;
-    this.props.transactions(data);
-    this.props.addSummary(data);
+    console.log("state data", data);
+    // this.props.transactions(data);
+    // this.props.addSummary(data);
     this.props.navigation.navigate("Summary", { data: data });
   };
 
@@ -290,7 +290,6 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     transact: state,
-    userId: state.user.user.uid,
   };
 };
 
