@@ -1,11 +1,20 @@
 import firebase from "../../firebase/firebase";
 
-export function createEmailAccount(email, password) {
-  return async (dispatch) => {
+export function createEmailAccount(name, number, email, password) {
+  return async (dispatch, { getFirestore }) => {
     try {
       const user = await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password);
+
+      await firebase
+        .firestore()
+        .collection("customers")
+        .doc(user.user.uid)
+        .set({
+          name: name,
+          number: number,
+        });
       dispatch(loggedIn(user));
     } catch (error) {
       dispatch(registerError(error.message));
@@ -19,7 +28,7 @@ export function loginEmailAccount(email, password) {
       const user = await firebase
         .auth()
         .signInWithEmailAndPassword(email, password);
-      console.log(user);
+      // console.log(user);
       dispatch(loggedIn(user));
     } catch (error) {
       dispatch(loginError(error.message));
@@ -36,7 +45,8 @@ export function logout() {
   };
 }
 
-export const addCustomer = (customer) => {
+{
+  /*export const addCustomer = (customer) => {
   return (dispatch, state, { getFirebase, getFirestore }) => {
     let user = getFirebase()
       .auth()
@@ -57,10 +67,15 @@ export const addCustomer = (customer) => {
         console.log(error);
       });
   };
-};
+};*/
+}
 
 export const addSummary = (summary) => {
+  console.log("add summary action");
   return (dispatch, state, { getFirestore }) => {
+    dispatch({
+      type: "ADD_SUMMARY",
+    });
     getFirestore()
       .collection("summarys")
       .add({
@@ -69,15 +84,36 @@ export const addSummary = (summary) => {
         sellerNumber: summary.sellerNumber,
         itemName: summary.itemName,
         itemDescription: summary.itemDescription,
+        uid: summary.uid,
         createdAt: new Date(),
       })
-      .then((doc) => {
-        console.log(doc);
-        //alert("Summary Sent");
+      .then(() => {
+        //console.log(summary);
+        alert("Summary Sent");
       })
       .catch((error) => {
         console.log(error);
       });
+    dispatch(transactions(summary));
+  };
+};
+
+export const getSummary = () => {
+  return async (dispatch, state, { getFirestore }) => {
+    try {
+      const data = await getFirestore().collection("summarys").get();
+      // .onSnapshot(
+      //   (snapshot) => {
+      //     var summarys = [];
+      //     snapshot.forEach((data) => {
+      //       summarys.push(data.data());
+      //     });
+
+      console.log("firestore summary", data.data());
+      dispatch(summarys(data.data()));
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 };
 

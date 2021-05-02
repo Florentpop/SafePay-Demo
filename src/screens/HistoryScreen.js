@@ -52,6 +52,7 @@ class HistoryScreen extends Component {
       <View>
         <FlatList
           data={this.state.history}
+          keyExtractor={(item, index) => item.key}
           renderItem={({ item }) => <History item={item} />}
         />
       </View>
