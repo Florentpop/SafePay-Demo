@@ -50,7 +50,7 @@ export function logout() {
   return (dispatch, state, { getFirebase, getFirestore }) => {
     let user = getFirebase()
       .auth()
-      .createUserWithEmailAndPassword(email, customer.password);
+      .createUserWithEmailAndPassword(customer.email, customer.password);
 
     getFirestore()
       .collection("customers")
@@ -158,26 +158,9 @@ export function total(info) {
   };
 }
 
-export function summarys(data) {
+export function summary(data) {
   return {
-    type: "GET_SUMMARY",
+    type: "RECEIVE_SUMMARY",
     data: data,
-  };
-}
-
-// export function setAllTransactions(data) {
-//   return {
-//     type: "SET_TRANSACTIONS",
-//     data: data,
-//   };
-// }
-
-export function addTransactions(data) {
-  console.log("action called");
-  return (dispatch, getState) => {
-    dispatch({
-      type: "ADD_TRANSACTIONS",
-      data,
-    });
   };
 }
