@@ -78,7 +78,7 @@ class SummaryScreen extends Component {
 
           <View style={styles.descriptionContainer}>
             <Text style={styles.descriptionText}>
-              Description : {this.props.transact.itemDescription}
+              Description :{this.props.transact.itemDescription}
             </Text>
             <Text style={styles.itemText}></Text>
           </View>

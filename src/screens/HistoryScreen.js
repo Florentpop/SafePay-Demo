@@ -6,6 +6,7 @@ import {
   StyleSheet,
   StatusBar,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 import { connect } from "react-redux";
 import { summary } from "../components/redux/actions/authActions";
