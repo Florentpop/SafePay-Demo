@@ -37,16 +37,17 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     justifyContent: "space-evenly",
+    backgroundColor: "#fff",
   },
 
   contentContainer: {
     marginTop: 20,
     alignSelf: "center",
     height: 160,
-    width: 350,
-    backgroundColor: "#F3F3CC",
+    width: 330,
+    backgroundColor: "#fff",
     borderRadius: 10,
-    elevation: 5,
+    elevation: 25,
     //shadowColor: "black",
     shadowColor: "blue",
     shadowOpacity: 5.27,
