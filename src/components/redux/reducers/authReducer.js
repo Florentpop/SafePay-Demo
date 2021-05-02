@@ -47,7 +47,6 @@ export default (state = initialState, action) => {
     case "ADD_SUMMARY":
       console.log("add summary called");
       const newSummary = {
-        id: uuid(),
         payment: action.payload.overAllPayment,
         price: action.payload.itemPrice,
         name: action.payload.companyName,

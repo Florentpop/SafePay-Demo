@@ -1,20 +1,30 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn install
+  C:\Program Files\nodejs\node.exe C:\Users\iamkupoe\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-get-random-value
 
 PATH: 
-  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  C:\Python39\Scripts\;C:\Python39\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;C:\Users\iamkupoe\AppData\Roaming\npm;C:\Users\iamkupoe\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\iamkupoe\AppData\Local\Microsoft\WindowsApps;
 
 Yarn version: 
   1.22.10
 
 Node version: 
-  14.16.1
+  14.15.4
 
 Platform: 
-  linux x64
+  win32 x64
 
 Trace: 
-  Error: ENOTEMPTY: directory not empty, rmdir '/media/florent/3003D0420CF56D74/SafePay/SafePay-Demo/node_modules/electron/dist/locales'
+  Error: https://registry.yarnpkg.com/react-native-get-random-value: Not found
+      at Request.params.callback [as _callback] (C:\Users\iamkupoe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
+      at Request.self.callback (C:\Users\iamkupoe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (C:\Users\iamkupoe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141634:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (C:\Users\iamkupoe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141556:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (internal/streams/readable.js:1327:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
 
 npm manifest: 
   {

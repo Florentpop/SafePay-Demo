@@ -8,10 +8,9 @@ import {
   ScrollView,
 } from "react-native";
 import { connect } from "react-redux";
-import { transactions } from "../components/redux/actions/authActions";
 import {
+  transactions,
   addTransaction,
-  addSummary,
 } from "../components/redux/actions/authActions";
 
 class Details extends Component {
@@ -65,12 +64,13 @@ class Details extends Component {
   }
 
   handleOnSubmit = () => {
-    this.setState({ uid: this.props.userId });
     const data = this.state;
-    console.log("state data", data);
-    // this.props.transactions(data);
-    // this.props.addSummary(data);
-    this.props.navigation.navigate("Summary", { data: data });
+
+    this.props.transactions(data);
+
+    //this.props.addTransaction(data);
+
+    this.props.navigation.navigate("Summary");
   };
 
   render() {
@@ -193,16 +193,14 @@ const styles = StyleSheet.create({
 
   inputText: {
     backgroundColor: "#fff",
-    color: "#1F84BD",
     height: 50,
     width: 330,
     borderRadius: 20,
     fontSize: 15,
     paddingLeft: 10,
     borderColor: "black",
-    borderWidth: 1,
+    borderWidth: 0.8,
     //elevation: 10,
-    fontFamily: "Roboto",
   },
 
   priceContainer: {
@@ -273,7 +271,6 @@ const styles = StyleSheet.create({
   opacityContainer: {
     alignSelf: "center",
     marginTop: 40,
-    flex: 0.2,
   },
 
   opacity: {
@@ -301,8 +298,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = () => {
   return {
     transactions,
-    //addTransaction,
-    addSummary,
+    addTransaction,
   };
 };
 

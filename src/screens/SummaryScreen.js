@@ -78,7 +78,7 @@ class SummaryScreen extends Component {
 
           <View style={styles.descriptionContainer}>
             <Text style={styles.descriptionText}>
-              Description :{this.props.transact.itemDescription}
+              Description : {this.props.transact.itemDescription}
             </Text>
             <Text style={styles.itemText}></Text>
           </View>
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
 
   gh: {
     flex: 2,
-    backgroundColor: "blue",
+    //backgroundColor: "blue",
     shadowColor: "#ffffff",
     shadowOpacity: 7.27,
     shadowRadius: 4.65,
@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
   top: {
     flex: 3,
     backgroundColor: "#ffffff",
-    borderTopLeftRadius: 1,
-    borderTopRightRadius: 60,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     justifyContent: "space-evenly",
   },
 
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
 
   sellerContainer: {
     //alignSelf: "center",
-    marginTop: -15,
+    marginTop: 5,
   },
   dealingText: {
     paddingBottom: 20,
