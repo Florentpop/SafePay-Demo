@@ -8,8 +8,10 @@ import {
   ScrollView,
 } from "react-native";
 import { connect } from "react-redux";
-import { transactions } from "../components/redux/actions/authActions";
-import { addTransaction } from "../components/redux/actions/authActions";
+import {
+  transactions,
+  addTransaction,
+} from "../components/redux/actions/authActions";
 
 class Detail extends Component {
   constructor(props) {

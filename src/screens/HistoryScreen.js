@@ -2,25 +2,56 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  Button,
+  ScrollView,
   StyleSheet,
   StatusBar,
-  TouchableOpacity,
+  FlatList,
 } from "react-native";
 import { connect } from "react-redux";
-import { summary } from "../components/redux/actions/authActions";
+import {
+  getSummary,
+  addTransactions,
+} from "../components/redux/actions/authActions";
+import History from "./History";
+import firebase from "firebase";
 
 class HistoryScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      history: [],
+    };
+  }
+  componentDidMount() {
+    const getHistory = async () => {
+      const db = firebase.firestore();
+      const transactionRef = db.collection("summarys");
+      const transactions = await transactionRef.get();
+      // console.log("transanctions", transactions);
+
+      transactions.forEach((doc) => {
+        this.setState({ history: [...this.state.history, doc.data()] });
+      });
+    };
+    getHistory();
   }
 
+  // getData = async () => {
+  //   const db = firebase.firestore();
+  //   const transactionRef = db.collection("summarys");
+  //   const transactions = await transactionRef.get();
+
+  //   // transactions.forEach
+  //   // });
+  // };
   render() {
+    console.log("state", this.state.history);
+    // console.log("all summarys", this.props.history);
+    // console.log(this.props.transactions);
     return (
       <View>
         <FlatList
           data={this.state.history}
-          keyExtractor={(item, index) => item.key}
           renderItem={({ item }) => <History item={item} />}
         />
       </View>
@@ -30,8 +61,19 @@ class HistoryScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.summary,
+    history: state.summarys,
+    transactions: state.transactions,
+    // .filter((item) => {
+    //   return item.uid === state.user.user.uid;
+    // }),
   };
 };
 
-export default connect(mapStateToProps, { summary })(HistoryScreen);
+const mapDispatchToProps = () => {
+  return {
+    getSummary,
+    addTransactions,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryScreen);
