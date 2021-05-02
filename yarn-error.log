@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\iamkupoe\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-get-random-value
+  C:\Program Files\nodejs\node.exe C:\Users\iamkupoe\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add uuid8.3.0
 
 PATH: 
   C:\Python39\Scripts\;C:\Python39\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;C:\Users\iamkupoe\AppData\Roaming\npm;C:\Users\iamkupoe\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\iamkupoe\AppData\Local\Microsoft\WindowsApps;
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/react-native-get-random-value: Not found
+  Error: https://registry.yarnpkg.com/uuid8.3.0: Not found
       at Request.params.callback [as _callback] (C:\Users\iamkupoe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
       at Request.self.callback (C:\Users\iamkupoe\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
       at Request.emit (events.js:315:20)
