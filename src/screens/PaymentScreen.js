@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  TextInput,
+  Modal,
   TouchableOpacity,
   Alert,
   StyleSheet,
   Image,
   ImageBackground,
+  Animated,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { ScrollView } from "react-native-gesture-handler";
@@ -18,35 +19,105 @@ import uuid from "react-native-uuid";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { connect } from "react-redux";
 
+const ModalPoup = ({ visible, children }) => {
+  const [showModal, setShowModal] = React.useState(visible);
+  const scaleValue = React.useRef(new Animated.Value(0)).current;
+  React.useEffect(() => {
+    toggleModal();
+  }, [visible]);
+  const toggleModal = () => {
+    if (visible) {
+      setShowModal(true);
+      Animated.spring(scaleValue, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      setTimeout(() => setShowModal(false), 200);
+      Animated.timing(scaleValue, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    }
+  };
+  return (
+    <Modal transparent visible={showModal}>
+      <View style={styles.modalBackGround}>
+        <Animated.View
+          style={[
+            styles.modalContainer,
+            { transform: [{ scale: scaleValue }] },
+          ]}
+        >
+          {children}
+        </Animated.View>
+      </View>
+    </Modal>
+  );
+};
+
 function PaymentScreen({ navigation, route }) {
   const transactionID = uuid.v4();
 
   const payAmount = route.params.data;
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        {/*<Text style={styles.text_header}>Bringing the Gap of Trust</Text>*/}
-      </View>
       <Animatable.View animation="fadeInLeft" style={styles.footer}>
         <KeyboardAwareScrollView style={styles.ontainer}>
-          <ImageBackground
-            source={require("../../assets/Safepay.png")}
-            style={styles.image}
-          >
+          <View style={styles.contentContainer}>
             <Text style={styles.amountText}>
               GH{"\u20B5"}
               {route.params.data}
             </Text>
-          </ImageBackground>
+          </View>
+
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <ModalPoup visible={visible}>
+              <View style={{ alignItems: "center" }}>
+                <View style={styles.header}>
+                  {/* Want to add Nav to Home Or History Screen */}
+                  <TouchableOpacity onPress={() => setVisible(false)}>
+                    <Image
+                      source={require("../../assets/x.png")}
+                      style={{ height: 30, width: 30 }}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <View style={{ alignItems: "center" }}>
+                <Image
+                  source={require("../../assets/success.png")}
+                  style={{ height: 150, width: 150, marginVertical: 10 }}
+                />
+              </View>
+
+              <Text
+                style={{
+                  marginVertical: 30,
+                  fontSize: 20,
+                  textAlign: "center",
+                }}
+              >
+                Congratulations Your Payment was Successful
+              </Text>
+            </ModalPoup>
+            {/*<Button title="Open Modal" onPress={() => setVisible(true)} /> */}
+          </View>
 
           <PayWithFlutterwave
             onRedirect={(res) => {
               const status = res.status;
               if (status === "successful") {
-                Alert.alert(
-                  `Your Transaction with ID ${res.transaction_id} was Successful`
-                );
+                // Alert.alert(
+                //   `Your Transaction with ID ${res.transaction_id} was Successful`
+                // );
+                setVisible(true);
               } else {
                 return Alert.alert("Something Went Wrong");
               }
@@ -89,7 +160,7 @@ const styles = StyleSheet.create({
     flex: 1,
     //paddingTop: 40,
     //justifyContent: "space-evenly",
-    backgroundColor: "#06C8F4",
+    backgroundColor: "#fff",
   },
 
   contentContainer: {
@@ -116,6 +187,23 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
 
+  contentContainer: {
+    alignSelf: "center",
+    height: 150,
+    width: 300,
+    //backgroundColor: "#DFA4E8",
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderColor: "#fff",
+
+    borderRadius: 10,
+    //elevation: 45,
+    //shadowColor: "black",
+    // shadowColor: "blue",
+    //shadowOpacity: 5.27,
+    //shadowRadius: 4.65,
+  },
+
   amountText: {
     fontSize: 25,
     textAlign: "center",
@@ -125,13 +213,17 @@ const styles = StyleSheet.create({
   },
 
   confirmOpacity: {
-    backgroundColor: "#06C8F4",
+    //backgroundColor: "#021639",
     color: "#fff",
     width: 170,
     height: 50,
     borderRadius: 25,
+
     alignSelf: "center",
     //marginTop: 105,
+    borderStyle: "solid",
+    borderWidth: 2,
+    borderColor: "#fff",
   },
 
   confirmText: {
@@ -142,7 +234,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   header: {
-    flex: 1,
+    flex: 9,
     justifyContent: "flex-end",
     paddingHorizontal: 20,
     paddingBottom: 25,
@@ -157,16 +249,38 @@ const styles = StyleSheet.create({
   },
 
   footer: {
-    flex: 19,
-    backgroundColor: "#fff",
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    flex: 8,
+    //backgroundColor: "#fff",
+    //borderTopLeftRadius: 30,
+    //borderTopRightRadius: 30,
     paddingHorizontal: 20,
     paddingVertical: 80,
+    backgroundColor: "blue",
   },
 
   btn: {
     paddingTop: 195,
+  },
+
+  modalBackGround: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContainer: {
+    width: "80%",
+    backgroundColor: "white",
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    borderRadius: 20,
+    elevation: 20,
+  },
+  header: {
+    width: "100%",
+    height: 40,
+    alignItems: "flex-end",
+    justifyContent: "center",
   },
 });
 

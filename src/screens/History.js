@@ -3,10 +3,9 @@ import moment from "moment";
 import {
   View,
   Text,
-  ScrollView,
+  TouchableOpacity,
   StyleSheet,
   StatusBar,
-  TouchableOpacity,
 } from "react-native";
 
 class History extends Component {
@@ -18,29 +17,32 @@ class History extends Component {
     // console.log(this.props.item);
     // const data = ({itemName, overAllPayment, companyName, sellerNumber, itemDescription, dateTime})
     return (
-      <View style={styles.mainContainer}>
-        <StatusBar barStyle="dark-content" backgroundColor="#06C8F4" />
-        <TouchableOpacity>
-          <View style={styles.contentContainer}>
-            <Text style={styles.ItemName}>{this.props.item.itemName}</Text>
-
-            <Text style={styles.Amount}>
-              GH{"\u20B5"}
-              {this.props.item.overAllPayment}
-            </Text>
-
-            <Text style={styles.totalText}>{this.props.item.companyName}</Text>
-            <Text style={styles.number}>{this.props.item.sellerNumber}</Text>
-            <Text style={styles.Descrip}>
-              {this.props.item.itemDescription}
-            </Text>
-            <Text style={styles.dateTime}>
-              {moment(this.props.item.createdAt.toDate()).calendar()}
-            </Text>
-          </View>
-        </TouchableOpacity>
-
-        <View style={styles.horizontalLine} />
+      <View style={styles.container}>
+        <View style={styles.mainContainer}>
+          <StatusBar barStyle="dark-content" backgroundColor="#06C8F4" />
+          <TouchableOpacity>
+            <View style={styles.contentContainer}>
+              <Text style={styles.amountText}>{this.props.item.itemName}</Text>
+              <Text style={styles.dateTime}>
+                GH{"\u20B5"}
+                {this.props.item.overAllPayment}
+              </Text>
+              <Text style={styles.totalText}>
+                {this.props.item.companyName}
+              </Text>
+              <Text style={styles.dateTime}>
+                {this.props.item.sellerNumber}
+              </Text>
+              <Text style={styles.dateTime}>
+                {this.props.item.itemDescription}
+              </Text>
+              <Text style={styles.dateTime1}>
+                {moment(this.props.item.createdAt.toDate()).calendar()}
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <View style={styles.horizontalLine} />
+        </View>
       </View>
     );
   }
@@ -50,7 +52,8 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     justifyContent: "space-evenly",
-    backgroundColor: "#fff",
+    backgroundColor: "#FEFCFF",
+    //marginTop: 30,
   },
 
   contentContainer: {
@@ -62,88 +65,47 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 10,
     //shadowColor: "black",
-    shadowColor: "blue",
-    shadowOpacity: 5.27,
-    shadowRadius: 4.65,
-    paddingLeft: 15,
-    paddingTop: 10,
+    // shadowColor: "blue",
+    // shadowOpacity: 5.27,
+    // shadowRadius: 4.65,
   },
 
   amountText: {
-    fontSize: 18,
-    paddingLeft: 10,
+    fontSize: 16,
+    paddingLeft: 20,
     paddingBottom: 5,
-    paddingTop: 5,
+    paddingTop: 10,
     textAlign: "left",
-    //color: "#436768",
+    color: "#436768",
   },
 
   totalText: {
-    fontSize: 18,
-    paddingLeft: 10,
+    fontSize: 16,
+    paddingLeft: 20,
     paddingBottom: 5,
     textAlign: "left",
-    //color: "#436768",
+    color: "#436768",
   },
 
   dateTime: {
-    fontSize: 14,
-    paddingRight: 10,
-    color: "#436768",
-    //textAlign: "left",
-    //paddingBottom: 5,
-    alignSelf: "flex-end",
-  },
-
-  Descrip: {
     fontSize: 16,
+    paddingLeft: 20,
+    color: "#436768",
+    textAlign: "left",
+    paddingBottom: 3,
+  },
+
+  dateTime1: {
+    fontSize: 12,
     paddingRight: 15,
-  },
-
-  title: {
-    fontSize: 18,
-    paddingRight: 15,
-    // color: "#436768",
-    //textAlign: "left",
-    //paddingBottom: 5,
-    // alignSelf: "flex-start",
-
-    //marginBottom: 10,
-  },
-
-  Amount: {
-    fontSize: 18,
-    paddingRight: 35,
-    //color: "#436768",
-    //textAlign: "left",
-    //paddingBottom: 5,
-    // alignContent: "flex-end",
-    alignSelf: "flex-end",
-    //textAlign: "center",
-    //marginBottom: 10,
-  },
-
-  number: {
-    fontSize: 18,
-    paddingRight: 35,
-    //color: "#436768",
-    //paddingBottom: 5,
-    // alignContent: "flex-end",
-    alignSelf: "flex-end",
-    //textAlign: "center",
-    //marginBottom: 10,
-  },
-
-  ItemName: {
-    fontSize: 18,
-    paddingLeft: 10,
-    //color: "#436768",
+    color: "#436768",
     textAlign: "left",
     paddingBottom: 5,
+    alignSelf: "flex-end",
   },
 
   horizontalLine: {
-    borderBottomColor: "#fff", //"#ff70d9",
+    borderBottomColor: "#ff70d9",
     borderBottomWidth: 1,
     width: 330,
     alignSelf: "center",

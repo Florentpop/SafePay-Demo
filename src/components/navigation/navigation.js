@@ -110,7 +110,7 @@ function AppContainer({ auth }) {
             options={{
               headerTitle: "Payment",
               headerStyle: {
-                backgroundColor: "#06C8F4",
+                backgroundColor: "blue",
               },
               headerTintColor: "white",
               headerTitleAlign: "center",
