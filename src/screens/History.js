@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   StatusBar,
+  Alert,
+  Button,
 } from "react-native";
 
 class History extends Component {
@@ -14,13 +16,33 @@ class History extends Component {
   }
 
   render() {
+    // let navigation = this.props;
+    let confirmationAlert = () =>
+      Alert.alert(
+        "Confirmation Alert",
+        "Has the item been delivered?",
+        [
+          {
+            text: "Yes",
+            onPress: () => alert("Delivery confirmed,Thank you!"),
+            style: "cancel",
+          },
+          {
+            text: "No",
+            onPress: () => alert("Not Delivered,Contact Seller!"),
+          },
+        ],
+
+        { cancelable: false }
+      );
+
     // console.log(this.props.item);
     // const data = ({itemName, overAllPayment, companyName, sellerNumber, itemDescription, dateTime})
     return (
       <View style={styles.container}>
         <View style={styles.mainContainer}>
           <StatusBar barStyle="dark-content" backgroundColor="#06C8F4" />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={confirmationAlert}>
             <View style={styles.contentContainer}>
               <Text style={styles.amountText}>{this.props.item.itemName}</Text>
               <Text style={styles.dateTime}>
@@ -39,8 +61,13 @@ class History extends Component {
               <Text style={styles.dateTime1}>
                 {moment(this.props.item.createdAt.toDate()).calendar()}
               </Text>
+              <Text style={styles.dateTime}>{this.props.item.uid}</Text>
+              {/*<Text style={{ color: "blue", textAlign: "center" }}>
+                Confirm
+              </Text>*/}
             </View>
           </TouchableOpacity>
+
           <View style={styles.horizontalLine} />
         </View>
       </View>
@@ -59,7 +86,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     marginTop: 20,
     alignSelf: "center",
-    height: 160,
+    height: 170,
     width: 330,
     backgroundColor: "#fff",
     borderRadius: 10,

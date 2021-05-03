@@ -45,15 +45,22 @@ class HistoryScreen extends Component {
   //   // });
   // };
   render() {
-    console.log("state", this.state.history);
+    //console.log("state", this.state.history);
     // console.log("all summarys", this.props.history);
     // console.log(this.props.transactions);
     return (
       <View>
         <FlatList
           data={this.state.history}
-          keyExtractor={(item, index) => item.key}
-          renderItem={({ item }) => <History item={item} />}
+          keyExtractor={(item, index) => {
+            item.uid;
+          }}
+          renderItem={({ item }) => (
+            <History
+              item={item}
+              // name={this.props.navigation.navigate("SummaryScreen")}
+            />
+          )}
         />
       </View>
     );

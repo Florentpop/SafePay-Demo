@@ -82,7 +82,11 @@ function PaymentScreen({ navigation, route }) {
               <View style={{ alignItems: "center" }}>
                 <View style={styles.header}>
                   {/* Want to add Nav to Home Or History Screen */}
-                  <TouchableOpacity onPress={() => setVisible(false)}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate("HistoryScreen", setVisible(false))
+                    }
+                  >
                     <Image
                       source={require("../../assets/x.png")}
                       style={{ height: 30, width: 30 }}
@@ -107,6 +111,7 @@ function PaymentScreen({ navigation, route }) {
                 Congratulations Your Payment was Successful
               </Text>
             </ModalPoup>
+
             {/*<Button title="Open Modal" onPress={() => setVisible(true)} /> */}
           </View>
 
@@ -126,7 +131,7 @@ function PaymentScreen({ navigation, route }) {
               tx_ref: transactionID,
               authorization: "FLWPUBK_TEST-a232cbe6c1595c2d05c81e28624a905d-X",
               customer: {
-                email: "customer-email@example.com",
+                email: "safepay@gmail.com",
               },
               amount: payAmount,
               currency: "GHS",

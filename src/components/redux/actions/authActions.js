@@ -85,8 +85,8 @@ export const addSummary = (summary) => {
         createdAt: new Date(),
       })
       .then(() => {
-        console.log("Summary called", summary);
-        alert("Summary Sent");
+        //console.log("Summary called", summary);
+        //alert("Summary Sent");
       })
       .catch((error) => {
         console.log(error);
