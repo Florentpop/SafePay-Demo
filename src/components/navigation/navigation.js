@@ -131,6 +131,21 @@ function AppContainer({ auth }) {
             name="Alert"
             component={Alert}
           />
+
+          <Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="HistoryScreen"
+            component={HistoryScreen}
+          />
+          {/*<Stack.Screen
+            options={{
+              headerShown: false,
+            }}
+            name="SummaryScreen"
+            component={Summary}
+          />*/}
         </Stack.Navigator>
       ) : (
         <Stack.Navigator initialRouteName="LogInScreen">
