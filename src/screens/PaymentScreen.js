@@ -84,7 +84,7 @@ function PaymentScreen({ navigation, route }) {
                   {/* Want to add Nav to Home Or History Screen */}
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.navigate("HistoryScreen", setVisible(false))
+                      navigation.navigate("HomeScreen", setVisible(false))
                     }
                   >
                     <Image
