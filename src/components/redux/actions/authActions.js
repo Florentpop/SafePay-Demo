@@ -71,11 +71,8 @@ export function logout() {
 }
 
 export const addSummary = (summary) => {
-  console.log("add summary action");
+  console.log("add summary action", summary);
   return (dispatch, state, { getFirestore }) => {
-    dispatch({
-      type: "ADD_SUMMARY",
-    });
     getFirestore()
       .collection("summarys")
       .add({
@@ -84,17 +81,21 @@ export const addSummary = (summary) => {
         sellerNumber: summary.sellerNumber,
         itemName: summary.itemName,
         itemDescription: summary.itemDescription,
-        uid: summary.uid,
+        // uid: summary.uid,
         createdAt: new Date(),
       })
       .then(() => {
-        //console.log(summary);
+        console.log("Summary called", summary);
         alert("Summary Sent");
       })
       .catch((error) => {
         console.log(error);
       });
     dispatch(transactions(summary));
+    dispatch({
+      type: "ADD_SUMMARY",
+      payload: summary,
+    });
   };
 };
 
@@ -109,7 +110,7 @@ export const getSummary = () => {
       //       summarys.push(data.data());
       //     });
 
-      console.log("firestore summary", data.data());
+      // console.log("firestore summary", data.data());
       dispatch(summarys(data.data()));
     } catch (error) {
       console.log(error.message);

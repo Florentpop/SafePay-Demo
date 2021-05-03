@@ -60,7 +60,7 @@ class Details extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state);
+    //console.log(this.state);
   }
 
   handleOnSubmit = () => {
@@ -74,7 +74,7 @@ class Details extends Component {
   };
 
   render() {
-    console.log(this.props.transact);
+    //console.log(this.props.transact);
     return (
       <ScrollView>
         <View style={styles.detailsContainer}>

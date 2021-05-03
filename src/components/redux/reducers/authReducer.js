@@ -24,20 +24,19 @@ export default (state = initialState, action) => {
     case "LOGIN_ERROR":
       return { ...state, error: { login: action.payload } };
 
-    case "ADD_CUSTOMER":
-      const newCustomer = {
-        id: uuid(),
-        name: action.payload.name,
-        number: action.payload.number,
-      };
-      return {
-        ...state,
-        customers: [...state.customers, newCustomer],
-      };
+    // case "ADD_CUSTOMER":
+    //   const newCustomer = {
+    //     id: uuid(),
+    //     name: action.payload.name,
+    //     number: action.payload.number,
+    //   };
+    //   return {
+    //     ...state,
+    //     customers: [...state.customers, newCustomer],
+    //   };
 
     case "ADD_SUMMARY":
       const newSummary = {
-        id: uuid(),
         payment: action.payload.overAllPayment,
         price: action.payload.itemPrice,
         name: action.payload.companyName,
@@ -47,7 +46,7 @@ export default (state = initialState, action) => {
       };
       return {
         ...state,
-        summarys: [...state.summarys, newSummary],
+        summarys: { ...state.summarys, newSummary },
       };
 
     case "DELETE_TRANSACTION":

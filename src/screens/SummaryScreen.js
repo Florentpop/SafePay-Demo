@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { connect } from "react-redux";
-import { total } from "../../src/components/redux/actions/authActions";
-import { addSummary } from "../../src/components/redux/actions/authActions";
+import {
+  total,
+  addSummary,
+} from "../../src/components/redux/actions/authActions";
 
 class SummaryScreen extends Component {
   constructor(props) {
@@ -33,8 +35,8 @@ class SummaryScreen extends Component {
   };
 
   render() {
-    console.log("summary", this.props.transact);
-
+    //console.log("summary", this.props.transact);
+    console.log(addSummary);
     return (
       <View style={styles.mainContainer}>
         <View style={styles.gh}>
