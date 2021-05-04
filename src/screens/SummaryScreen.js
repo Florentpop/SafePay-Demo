@@ -58,29 +58,31 @@ class SummaryScreen extends Component {
           {/*<View style={styles.horizontalLine} />*/}
 
           <View style={styles.sellerContainer}>
-            <Text style={styles.dealingText}>
-              Company Name :{this.props.transact.companyName}
-            </Text>
+            <Text style={styles.dealingText}>Company Name :</Text>
             <Text style={styles.numberText}>
-              Number:{this.props.transact.sellerNumber}
+              {this.props.transact.companyName}
             </Text>
-            <Text style={styles.companyText}></Text>
+
+            <Text style={styles.numberText}>
+              {this.props.transact.sellerNumber}
+            </Text>
           </View>
 
           <View style={styles.horizontalLine} />
 
           <View style={styles.itemContainer}>
-            <Text style={styles.purchaseText}>
-              Item Name :{this.props.transact.itemName}
+            <Text style={styles.dealingText}>Item Name :</Text>
+            <Text style={styles.numberText}>
+              {this.props.transact.itemName}
             </Text>
-            <Text style={styles.itemText}></Text>
           </View>
 
           <View style={styles.horizontalLine} />
 
           <View style={styles.descriptionContainer}>
-            <Text style={styles.descriptionText}>
-              Description : {this.props.transact.itemDescription}
+            <Text style={styles.descriptionText}>Description :</Text>
+            <Text style={styles.numberText}>
+              {this.props.transact.itemDescription}
             </Text>
             <Text style={styles.itemText}></Text>
           </View>
@@ -178,7 +180,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   dealingText: {
-    paddingBottom: 20,
+    paddingBottom: 5,
     fontWeight: "bold",
     //textAlign: "center",
     fontSize: 18,
@@ -186,10 +188,11 @@ const styles = StyleSheet.create({
     color: "#484b5a",
   },
   numberText: {
-    fontWeight: "bold",
-    marginLeft: 36,
+    // fontWeight: "bold",
+    marginLeft: 40,
+    alignSelf: "center",
     fontSize: 18,
-    color: "#484b5a",
+    // color: "#484b5a",
     //paddingLeft: 10,
   },
   companyText: {
