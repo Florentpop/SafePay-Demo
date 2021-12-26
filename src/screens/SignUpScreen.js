@@ -50,9 +50,15 @@ class SignUpScreen extends Component {
       number: this.state.number,
     };
 
-    this.props.createEmailAccount(this.state.name, this.state.number, this.state.email, this.state.password, () => {
-      //this.props.addCustomer(data);
-    });
+    this.props.createEmailAccount(
+      this.state.name,
+      this.state.number,
+      this.state.email,
+      this.state.password,
+      () => {
+        //this.props.addCustomer(data);
+      }
+    );
   };
 
   render() {

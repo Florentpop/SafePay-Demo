@@ -7,6 +7,7 @@ import {
   Text,
   TouchableRipple,
 } from "react-native-paper";
+import firebase from "firebase";
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -21,6 +22,23 @@ import { logout } from "../components/redux/actions/authActions";
 class ProfileScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      customer: [],
+    };
+  }
+
+  componentDidMount() {
+    const getCustomer = async () => {
+      const db = firebase.firestore();
+      const detailRef = db.collection("customers");
+      const details = await detailRef.get();
+      // console.log("transanctions", transactions);
+
+      details.forEach((doc) => {
+        this.setState({ customer: [...this.state.customer, doc.data()] });
+      });
+    };
+    getCustomer();
   }
 
   handleOnSubmit = () => {
@@ -77,7 +95,7 @@ class ProfileScreen extends Component {
                   },
                 ]}
               >
-                John Doe
+                {this.props.name}
               </Title>
               <Caption style={styles.caption}>@j_doe</Caption>
             </View>
@@ -88,7 +106,7 @@ class ProfileScreen extends Component {
           <View style={styles.row}>
             <Icon name="phone" color="#777777" size={20} />
             <Text style={{ color: "#777777", marginLeft: 20 }}>
-              +233-243034019
+              {this.props.number}
             </Text>
           </View>
 
@@ -102,7 +120,7 @@ class ProfileScreen extends Component {
           <View style={styles.row}>
             <Icon name="email" color="#777777" size={20} />
             <Text style={{ color: "#777777", marginLeft: 20 }}>
-              florentpop@gmail.com
+              {this.props.email}
             </Text>
           </View>
         </View>
@@ -187,6 +205,13 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
   return {
     auth: state,
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    getSummary,
+    addTransactions,
   };
 };
 

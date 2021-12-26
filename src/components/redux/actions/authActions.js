@@ -75,6 +75,7 @@ export const addSummary = (summary) => {
   return (dispatch, state, { getFirestore }) => {
     getFirestore()
       .collection("summarys")
+      //.orderBy("name", "desc")
       .add({
         overAllPayment: summary.overAllPayment,
         companyName: summary.companyName,
@@ -102,7 +103,10 @@ export const addSummary = (summary) => {
 export const getSummary = () => {
   return async (dispatch, state, { getFirestore }) => {
     try {
-      const data = await getFirestore().collection("summarys").get();
+      const data = await getFirestore()
+        .collection("summarys")
+        .orderBy("timestamp", "desc")
+        .get();
       // .onSnapshot(
       //   (snapshot) => {
       //     var summarys = [];
